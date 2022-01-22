@@ -6,6 +6,7 @@ from flask_cors import CORS
 from flask_mongoengine import MongoEngine
 
 #for recipe recommandation
+import numpy as np
 import pandas as pd
 import ast
 
@@ -40,7 +41,6 @@ def create_user():
     user.save()
     return user.to_json()
 
-# TODO: on disconnect, delete user object and remove it from other users' match field
 
 def find_best_match(user, possible_matches, INGRED_SIMIL_THRESHOLD = 3):
     if not possible_matches:
@@ -56,6 +56,7 @@ def find_best_match(user, possible_matches, INGRED_SIMIL_THRESHOLD = 3):
             max_nb = nb_same_ingred
 
     return best_match
+
 
 def find_common_recipies(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
     common_ingredients = list(set(userA.ingredients).intersection(set(userB.ingredients)))
@@ -91,13 +92,18 @@ def find_common_recipies(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
             final_recs.append(rec)
         return final_recs
     else:
-        return []  #display something like "no recipe in the dataset, want to create one with your match?"
+        return []
 
+# TODO: if time permits, do disconnecting logic that deletes user documents
 
 @socketio.on('search-for-match')
 def on_search_for_match(user_id):
 
-    user: User = User.objects.get_or_404(pk=user_id)
+    try:
+        user: User = User.objects.get(pk=user_id)
+    except:
+        return
+
     user.sid = request.sid
     user.save()
 
@@ -113,6 +119,8 @@ def on_search_for_match(user_id):
     match.save()
 
     recipies = find_common_recipies(user, match)
+    # print(user.ingredients, match.ingredients)
+    # print(recipies)
 
     emit('match', {'match': match.to_json(), 'recipies': recipies}, to=user.sid)
     emit('match', {'match': user.to_json(), 'recipies': recipies}, to=match.sid)
@@ -121,4 +129,4 @@ def on_search_for_match(user_id):
 # TODO: chatting feature
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
+    socketio.run(app, port=8080, debug=True)

@@ -1,6 +1,6 @@
 export let SERVER_URL;
 if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-    SERVER_URL = "http://127.0.0.1:5000";
+    SERVER_URL = "http://127.0.0.1:8080";
 } else {
     SERVER_URL = ""; //TODO if we deploy
 }

@@ -13,7 +13,8 @@ export default function Landing({ onCreateUser }) {
         const response = await apiCall('/user/create',
             {
                 name: nameInput,
-                ingredients: ingredientsInput.toLowerCase().replace(/\s/g, "").split(',')
+                ingredients: ingredientsInput.toLowerCase().split(',')
+                    .map(ingredient => ingredient.trim())
             })
         if (response) {
             delete Object.assign(response, {

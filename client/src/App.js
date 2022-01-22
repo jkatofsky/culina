@@ -27,8 +27,8 @@ function App() {
         const socket = io(SERVER_URL, { transports: ['websocket'] });
         socket.on('connect',
             () => socket.emit('search-for-match', user.id))
-        socket.on("match", (partner, recipies) => {
-            onMatch(partner, recipies);
+        socket.on("match", (matchObj) => {
+            onMatch(matchObj.partner, matchObj.recipies);
         });
     }
 
