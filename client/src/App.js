@@ -15,7 +15,7 @@ import './App.css';
 function App() {
 
     const [user, setUser] = useState({});
-    const [partner, setPartner] = useState({});
+    const [match, setMatch] = useState({});
     const [recipies, setRecipies] = useState([]);
     const [chat, setChat] = useState([]);
 
@@ -28,18 +28,18 @@ function App() {
         socket.on('connect',
             () => socket.emit('search-for-match', user.id))
         socket.on("match", (matchObj) => {
-            onMatch(matchObj.partner, matchObj.recipies);
+            onMatch(matchObj.match, matchObj.recipies);
         });
     }
 
-    const onMatch = (partner, recipies) => {
-        setPartner(partner)
+    const onMatch = (match, recipies) => {
+        setMatch(match)
         setRecipies(recipies)
     }
 
     const onChat = (message) => {
         setChat(chat => [...chat, message]);
-        // TODO: emit chatting event to partner
+        // TODO: emit chatting event to match
     }
 
     return <Router>
@@ -49,7 +49,7 @@ function App() {
                 </Route>
                 <Route path="/match">
                     <Match user={user}
-                        partner={partner}
+                        match={match}
                         recipies={recipies}
                         chat={chat}
                         onChat={onChat} />
