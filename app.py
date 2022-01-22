@@ -19,7 +19,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 class User(db.Document):
     name = db.StringField(required=True)
     ingredients = db.ListField(db.StringField(), default=list)
-    match = db.ObjectIdField(default=None)
+    match = db.ObjectIdField()
     sid = db.StringField()
 
 
@@ -48,7 +48,6 @@ def find_common_recipies(user1, user2):
     # first, intersect user1.ingredients and user2.ingredients, then use that to query the recipies
     pass
 
-# TODO: test this
 @socketio.on('search-for-match')
 def on_search_for_match(user_id):
 
@@ -56,14 +55,21 @@ def on_search_for_match(user_id):
     user.sid = request.sid
     user.save()
 
-    possible_matches = User.objects(pk_ne=user_id, match=None)
+    possible_matches = User.objects(pk__ne=user_id, match__exists=False)
     match = find_best_match(user, possible_matches)
+
     if not match:
         return
+
+    user.match = match.id
+    match.match = user.id
+    user.save()
+    match.save()
+
     recipies = find_common_recipies(user, match)
 
-    emit('match', match, recipies, to=user.sid)
-    emit('match', user, recipies, to=match.sid)
+    emit('match', {'match': match.to_json(), 'recipies': recipies}, to=user.sid)
+    emit('match', {'match': user.to_json(), 'recipies': recipies}, to=match.sid)
 
 
 # TODO: chatting feature
