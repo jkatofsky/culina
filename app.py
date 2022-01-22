@@ -128,7 +128,7 @@ def on_search_for_match(user_id):
 
 @socketio.on('message')
 def on_message(user_id, message):
-    print('messaging!')
+    # print('messaging!')
     try:
         user: User = User.objects.get(pk=user_id)
         match: User = User.objects.get(pk=user.match)

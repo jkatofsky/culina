@@ -27,7 +27,6 @@ function App() {
             setRecipies(matchObj.recipies)
         });
         socket.on("messaged", (messageObj) => {
-            console.log('got messaged', messageObj)
             setChat(chat => [...chat, messageObj]);
         });
     }
