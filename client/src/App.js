@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -17,19 +17,19 @@ function App() {
     const [recipies, setRecipies] = useState([]);
     const [chat, setChat] = useState([]);
 
-    useEffect(() => {
-        socket.on("match", (matchObj) => {
+    const onCreateUser = (user) => {
+        setUser(user);
+
+        socket.emit('search-for-match', user.id);
+
+        socket.once("match", (matchObj) => {
             setMatch(JSON.parse(matchObj.match))
             setRecipies(matchObj.recipies)
         });
         socket.on("messaged", (messageObj) => {
+            console.log('got messaged', messageObj)
             setChat(chat => [...chat, messageObj]);
         });
-    })
-
-    const onCreateUser = (user) => {
-        setUser(user);
-        socket.emit('search-for-match', user.id);
     }
 
     const onSendMessage = (message) => {

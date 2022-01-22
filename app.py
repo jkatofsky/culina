@@ -126,14 +126,14 @@ def on_search_for_match(user_id):
     emit('match', {'match': user.to_json(), 'recipies': recipies}, to=match.sid)
 
 
-# TODO: test
 @socketio.on('message')
 def on_message(user_id, message):
+    print('messaging!')
     try:
         user: User = User.objects.get(pk=user_id)
+        match: User = User.objects.get(pk=user.match)
     except:
         return
-    match = User.objects.get(pk=user.match)
     emit('messaged', { 'sender': user.name, 'message': message }, to=match.sid)
 
 
