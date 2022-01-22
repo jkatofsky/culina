@@ -11,31 +11,30 @@ export default function Match({ user, match, recipies, chat, onChat }) {
 
     // tried my best ;-; web dev is so hard eueueue
     //rec = {
-                //"name": #str; example: "Noodles With Eggplants and Mushrooms"
-               // "ingredients": #list of str, each string = ingredient + its quantity
-               // "instructions": #list of str, each string = step in cooking the dish
-           // } We can have up to 3 such recs
+    //"name": #str; example: "Noodles With Eggplants and Mushrooms"
+    // "ingredients": #list of str, each string = ingredient + its quantity
+    // "instructions": #list of str, each string = step in cooking the dish
+    // } We can have up to 3 such recs
 
-    return <>
-    <h1>Your Match is {{ user.name }} </h1>
-    <p> Your match has the following ingredients: </p>
-    <p> {{ match.ingredients }} </p>
-    <div class="scrolling-wrapper")
-        <h2> Suggested Recipes </h2>
-        <div class = "card">
-            <h3> {{recipies[0]["name"]}} </h3>
-            <h3> {{recipies[0]["ingredients"]}} </h3> //I don't know if it'll print list nicely?
-            <h3> {{recipies[0]["instructions"]}} </h3>
-        </div>
-
-        <div class = "card"> </div>
-            <h3> {{recipies[1]["name"]}} </h3>
-        </div>
-
-        <div class = "card">
-            <h3> {{recipies[2]["name"]}} </h3>
-        </div>
-
-    </div>
-    </>
+    console.log(user, match);
+    const commonIngredients = match ? user.ingredients
+        .filter(ingredient => match.ingredients.includes(ingredient)) : [];
+    
+    return !match ? <h3>loading...</h3> :
+            <>
+            <h1 > Your Match is { match.name } </h1 >
+            <p>Your and match have the following ingredients in commmon:</p>
+            <p>{commonIngredients.join(', ')}</p>
+            <div className="scrolling-wrapper">
+                <h2>Suggested Recipes</h2>
+                {recipies.map(recipie =>
+                    <div className="card">
+                        <h3>{recipie["name"]}</h3>
+                        <h3>{recipie["ingredients"]}</h3>
+                        <h3>{recipie["instructions"]}</h3>
+                    </div>)
+                }
+            </div>
+        </>
+    
 }

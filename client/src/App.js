@@ -14,8 +14,8 @@ import './App.css';
 
 function App() {
 
-    const [user, setUser] = useState({});
-    const [match, setMatch] = useState({});
+    const [user, setUser] = useState(null);
+    const [match, setMatch] = useState(null);
     const [recipies, setRecipies] = useState([]);
     const [chat, setChat] = useState([]);
 
@@ -28,7 +28,7 @@ function App() {
         socket.on('connect',
             () => socket.emit('search-for-match', user.id))
         socket.on("match", (matchObj) => {
-            onMatch(matchObj.match, matchObj.recipies);
+            onMatch(JSON.parse(matchObj.match), matchObj.recipies);
         });
     }
 
