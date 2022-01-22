@@ -19,14 +19,11 @@ function App() {
     const [recipies, setRecipies] = useState([]);
     const [chat, setChat] = useState([]);
 
-    useEffect(() => {
-        // TODO: define handlers for recieved event(s?)
-        // will call onMatch at the least
-    }, []);
-
+    // TODO: figure out why I can't get the socket object in the state or a static variable for use outside this function
+    // will be a problem for the chat feature
     const onCreateUser = (user) => {
         setUser(user);
-        console.log(user);
+        // console.log(user);
         const socket = io(SERVER_URL, { transports: ['websocket'] });
         socket.on('connect',
             () => socket.emit('search-for-match', user.id))
@@ -47,11 +44,9 @@ function App() {
 
     return <Router>
             <Switch>
-                {/* click button and create user with id before redirecting */}
                 <Route exact path="/">
                     <Landing onCreateUser={onCreateUser} />
                 </Route>
-                {/* renders each id if they are matched with the other */}
                 <Route path="/match">
                     <Match user={user}
                         partner={partner}

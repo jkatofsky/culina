@@ -1,3 +1,4 @@
+from re import L
 from flask import Flask, request
 from flask_socketio import SocketIO, emit
 import traceback
@@ -19,6 +20,7 @@ class User(db.Document):
     name = db.StringField(required=True)
     ingredients = db.ListField(db.StringField(), default=list)
     match = db.ObjectIdField(default=None)
+    sid = db.StringField()
 
 
 @app.route('/')
@@ -35,18 +37,34 @@ def create_user():
 
 # TODO: on disconnect, delete user object and remove it from other users' match field
 
+def find_best_match(user, possible_matches):
+    # TODO: @ yu lu
+    # find the user with the largest intersection of ingredients
+    # if none found with intersection above threshold length, return None
+    pass
+
+def find_common_recipies(user1, user2):
+    # TODO @ yu lu
+    # first, intersect user1.ingredients and user2.ingredients, then use that to query the recipies
+    pass
+
+# TODO: test this
 @socketio.on('search-for-match')
 def on_search_for_match(user_id):
-    # TODO
-    # get user
-    # search other users for those without match field
-    # find best match based on ingredients
-    # if no suitable match, don't do anything dont do anything
-    # for the best match found
-        # find recipies best matching common ingredients
-        # to each user, send other user object and recepies list
-            # emit('match')
-    pass
+    
+    user: User = User.objects.get_or_404(pk=user_id)
+    user.sid = request.sid
+    user.save()
+
+    possible_matches = User.objects(pk_ne=user_id, match=None)
+    match = find_best_match(user, possible_matches)
+    if not match:
+        return
+    recipies = find_common_recipies(user, match)
+
+    emit('match', match, recipies, to=user.sid)
+    emit('match', user, recipies, to=user.sid)
+
 
 # TODO: chatting feature
 
