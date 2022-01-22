@@ -53,12 +53,49 @@ body {
     font-size: 65px;
 }
 
-.landing-page-greeting-text.animated {
-    margin-left: 15px;
+
+
+@keyframes scrollIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+.landing-page-animated-text-wrapper.animated {
+    animation: scrollIn 3s 1s ease-in-out infinite forwards;
+}
+.landing-page-animated-text-wrapper.animated {
+    opacity: 0;
+    width: 400px;
+    overflow: hidden;
 }
 
-.landing-page-greeting-text.animated.veggies {
-    color: #1ec862;
+.landing-page-greeting-text {
+    margin-left: 15px;   
+}
+.landing-page-greeting-text.red{
+    color: rgb(190, 81, 81);
+}
+.landing-page-greeting-text.yellow{
+    color: rgb(150, 150, 77);
+}
+.landing-page-greeting-text.green{
+    color: rgb(68, 119, 68);
+}
+.landing-page-greeting-text.purple{
+    color: rgb(118, 64, 118);
 }
 
 .landing-page-greeting-line-wrapper {
@@ -79,8 +116,20 @@ body {
     cursor: pointer;
 }
 
-#scroll-down-image {
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(7px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+#scroll-down-img {
     width: 5%;
+    animation: float 3s ease-in-out 1s infinite forwards;
 }
 
 .three-steps-text {
@@ -176,19 +225,31 @@ body {
     position: fixed;
     opacity: 0;
     width: 50vw;
-    height: 60vh;
+    height: 50vh;
     top: 0px;
-    left: calc(50% - 25vw);
+    left: calc(50% - 25vw - 15px);
     top: calc(50% - 30vh);
     background-color: white;
-    border: 3px solid black;
+    border: 2px solid black;
     box-shadow: 0px 0px 1000px 1000px rgba(0, 0, 0, 0.303);
     border-radius: 5px;
     animation: fade-in 0.5s ease-in-out 0s forwards;
     display: flex;
-    padding: 20px;
+    padding: 30px;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal-window-title {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+#modal-pot-img {
+    transform: scale(0.5);
 }
 
 .modal-input {
@@ -196,7 +257,7 @@ body {
     height: 50px;
     margin: 20px;
     outline: none;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 #name-input {
@@ -204,11 +265,11 @@ body {
 }
 
 #match-btn {
-    width: 10vw;
+    width: auto;
     height: 40px;
     font-size: 30px;
     cursor: pointer;
-    margin-top: 15vh;
+    margin-top: 50px;
     background-color: #449fa4;
     border: 3px solid #41787B;
     color: #d3f9fa;
@@ -216,15 +277,18 @@ body {
 }
 
 #close-modal {
-    width: 10vw;
+    width: auto;
     height: 40px;
     font-size: 30px;
     cursor: pointer;
     margin-top: 2vh;
-    background-color: #449fa4;
-    border: 3px solid #41787B;
-    color: #d3f9fa;
+    background-color: #d88191;
+    border: 3px solid #a63861;
+    color: #f9cfd7;
     border-radius: 3px;
+}
+#close-modal:hover {
+    background-color: #ae6270;
 }
 
 #match-btn:hover {

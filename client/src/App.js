@@ -38,7 +38,7 @@ function App() {
     }
 
     const onChat = (message) => {
-        setChat(chat => [...chat, message]);
+        setChat(chat => [...chat, { sender: user.name, text: message }]);
         // TODO: emit chatting event to match
     }
 

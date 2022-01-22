@@ -15,6 +15,13 @@ export default function Landing({ onCreateUser }) {
     const [nameInput, setNameInput] = useState('');
     const [ingredientsInput, setIngredientsInput] = useState('');
     const [modalOpen, setModalState] = useState(false);
+    var [animatedTextIndex, setAnimatedTextIndex] = useState(0);
+    const animatedTextArray = [
+        {food: 'mexican', color: 'red'}, 
+        {food: 'indian', color: 'yellow'},
+        {food: 'thai', color: 'green'},
+        {food: 'together', color: 'purple'},
+    ];
 
     const history = useHistory();
 
@@ -66,7 +73,9 @@ export default function Landing({ onCreateUser }) {
                     <div className='landing-page-greeting-text'>Today, we're</div>
                     <div className='landing-page-greeting-line-wrapper'>
                         <div className='landing-page-greeting-text'>cooking</div>
-                        <div className='landing-page-greeting-text animated veggies'>veggies</div>
+                            <div className='landing-page-animated-text-wrapper animated' onAnimationIteration={() => setAnimatedTextIndex(animatedTextIndex = (animatedTextIndex+1)%4)}>
+                                <div className={`landing-page-greeting-text ${animatedTextArray[animatedTextIndex].color}`}>{animatedTextArray[animatedTextIndex].food}</div>
+                            </div>
                     </div>
                 </div>
                 <img id='pot-svg' className='pot-svg' src={pot}></img>
@@ -136,10 +145,16 @@ export default function Landing({ onCreateUser }) {
                     <div className='landing-page-brand-text right'>ina.</div>
                 </div>
             </div>
-            
+
         </div>
-            {modalOpen && 
-            <div className='landing-page-user-info-modal'>
+        {modalOpen && 
+        <div className='landing-page-user-info-modal'>
+
+            <div className='modal-window-title'>
+                ENTER YOUR NAME AND THE INGREDIENTS THAT YOU HAVE ACCESS TO
+            </div>
+
+            
 
             <input id='name-input' className='modal-input' type="text" placeholder="Enter name"
                     value={nameInput}
