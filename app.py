@@ -5,6 +5,10 @@ import traceback
 from flask_cors import CORS
 from flask_mongoengine import MongoEngine
 
+#for recipe recommandation
+import pandas as pd
+import ast
+
 app = Flask(__name__, static_folder='client/build', static_url_path='/')
 
 # app.config.from_pyfile('config.py')
@@ -14,7 +18,8 @@ db = MongoEngine()
 db.init_app(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-# TODO: load in the CSV
+# load in the CSV
+RECIPES = pd.read_csv("quick_health_meals.csv")
 
 class User(db.Document):
     name = db.StringField(required=True)
@@ -37,16 +42,58 @@ def create_user():
 
 # TODO: on disconnect, delete user object and remove it from other users' match field
 
-def find_best_match(user, possible_matches):
+def find_best_match(user, possible_matches, INGRED_SIMIL_THRESHOLD = 3):
     # TODO: @ yu lu
     # find the user with the largest intersection of ingredients
     # if none found with intersection above threshold length, return None
-    pass
+    best_match = None
+    max_nb = 0
 
-def find_common_recipies(user1, user2):
+    for m in possible_matches:
+        nb_same_ingred = len(set(userA.ingredients).intersection(set(m.ingredients)))
+        if nb_same_ingred >= INGRED_SIMIL_THRESHOLD and nb_same_ingred > max_nb:
+            best_match = m
+            max_nb = nb_same_ingred
+
+    return best_match
+
+def find_common_recipies(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
     # TODO @ yu lu
     # first, intersect user1.ingredients and user2.ingredients, then use that to query the recipies
-    pass
+    common_ingredients = list(set(userA.ingredients).intersection(set(userB.ingredients)))
+
+    # Returns filter with the number of common ingredients each recipe contains
+    preliminary_filter = RECIPES.ingredients.apply(lambda x: np.sum([*map(lambda l: l in x, common_ingredients)]))
+    preliminary_recipes = RECIPES[preliminary_filter > RECIPE_INGRED_THRESHOLD]
+    preliminary_recipes = preliminary_recipes.to_dict("records")
+
+    # sort by the number of possible missing ingredients, suggesting the recipes with lowest nb
+    if len(preliminary_recipes) > 0:
+        for r in preliminary_recipes:
+            recipe_ingred = set(ast.literal_eval(r["ingredients"]))
+
+            possible_missing_A = recipe_ingred.difference(set(userA.ingredients))
+            possible_missing_B = recipe_ingred.difference(set(userB.ingredients))
+
+            total_possible_missing = len(possible_missing_A) + len(possible_missing_B)
+            r["total_possible_missing"] = total_possible_missing
+
+        newlist = sorted(preliminary_recipes, key=lambda d: d['total_possible_missing'])
+        top_3 = newlist[:3]
+
+        #format the recommendations
+        final_recs = []
+        for t in top_3:
+            rec = {
+                "name": t["name"] #str; example: "Noodles With Eggplants and Mushrooms"
+                "ingredients": ast.literal_eval(t["ingredients_raw_str"]) #list of str, each string = ingredient + its quantity
+                "instructions": ast.literal_eval(t["steps"]) #list of str, each string = step in cooking the dish
+            }
+
+            final_recs.append(rec)
+        return final_recs
+    else:
+        return []  #display something like "no recipe in the dataset, want to create one with your match?"
 
 # TODO: test this
 @socketio.on('search-for-match')
