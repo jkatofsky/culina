@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import { apiCall } from '../../util';
+import { useHistory } from 'react-router-dom';
 
 export default function Landing({ onCreateUser }) {
 
     const [nameInput, setNameInput] = useState('');
     const [ingredientsInput, setIngredientsInput] = useState('');
 
+    const history = useHistory();
+
     const createUser = async () => {
         const response = await apiCall('/user/create',
             {
                 name: nameInput,
-                ingredients: ingredientsInput.lower().replace(/\s/g, "").split(',')
+                ingredients: ingredientsInput.toLowerCase().replace(/\s/g, "").split(',')
             })
-        if (response) onCreateUser(response)
-        
+        if (response) {
+            delete Object.assign(response, {
+                'id': response['_id']['$oid']
+            })['_id'];
+            onCreateUser(response)
+            history.push('/search')
+        }
     }
 
     return <>

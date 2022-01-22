@@ -26,9 +26,6 @@ def homepage():
     return app.send_static_file('index.html')
 
 
-# TODO; rethink this? do the search for match on user create all through HTTP
-# ONLY using WS for notifying users of match or the chat feature
-
 @app.route('/user/create', methods=['POST'])
 def create_user():
     data: dict = request.json
@@ -47,7 +44,8 @@ def on_search_for_match(user_id):
     # if no suitable match, don't do anything dont do anything
     # for the best match found
         # find recipies best matching common ingredients
-        # send both user ids back & send them both recepie list
+        # to each user, send other user object and recepies list
+            # emit('match')
     pass
 
 # TODO: chatting feature
