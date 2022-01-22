@@ -1,8 +1,21 @@
-.scrolling-wrapper {
+.horizontal-scrolling-wrapper {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	white-space: nowrap;	
 }
-.card {
+.vertical-scrolling-wrapper {
+        background-color: green;
+        overflow-x: hidden;
+        overflow-y: auto;
+}
+
+.message-box{
+        background-color: white;
+}
+
+
+.recipe-card {
 	display: inline-block;
 }
+
+

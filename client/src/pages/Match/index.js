@@ -19,22 +19,48 @@ export default function Match({ user, match, recipies, chat, onChat }) {
     console.log(user, match);
     const commonIngredients = match ? user.ingredients
         .filter(ingredient => match.ingredients.includes(ingredient)) : [];
-    
+    const hasRecipes = (recipies.length != 0)
+
     return !match ? <h3>loading...</h3> :
             <>
             <h1 > Your Match is { match.name } </h1 >
             <p>Your and match have the following ingredients in commmon:</p>
             <p>{commonIngredients.join(', ')}</p>
-            <div className="scrolling-wrapper">
-                <h2>Suggested Recipes</h2>
-                {recipies.map(recipie =>
-                    <div className="card">
-                        <h3>{recipie["name"]}</h3>
-                        <h3>{recipie["ingredients"]}</h3>
-                        <h3>{recipie["instructions"]}</h3>
-                    </div>)
+
+            //recipe suggestion
+            <div className="horizontal-scrolling-wrapper">
+                    {hasRecipes ? (
+                            <h2> No recipe suggestion, go crazy with your match! </h2>
+                      ) : (
+                                <h2>Suggested Recipes</h2>
+                                {recipies.map(recipie =>
+                                    <div className="recipe-card">
+                                        <h3>{recipie["name"]}</h3>
+                                        <h3>{recipie["ingredients"]}</h3>
+                                        <h3>{recipie["instructions"]}</h3>
+                                    </div>)
+                                }
+                            )
+                       }
+            </div>
+
+            //chat display box
+            <div className="vertical-scrolling-wrapper">
+                <h2>Say Hi and Start Cooking!</h2>
+                {chat["messages"].map(message =>
+                    <p>Sender: {message["sender"]}</p>
+                    <p>Message: {message["text"]}</p>
                 }
             </div>
+
+            //chat enter text box
+            <div className="message-box">
+              <input type="text" placeholder="enter your message..." <br><br>
+              <input type="submit" value="SEND" onChat DO????>
+            </div>
+
+
+
         </>
     
 }
