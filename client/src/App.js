@@ -41,11 +41,16 @@ function App() {
         history.push('/match')
     }
 
+    const onChat = (message) => {
+        setChat(chat => [...chat, message]);
+        // TODO: emit chatting event to partner
+    }
+
     return <Router>
             <Switch>
                 {/* click button and create user with id before redirecting */}
                 <Route exact path="/">
-                    <Landing onCreateUser={(user) => onCreateUser(user)}/>
+                    <Landing onCreateUser={onCreateUser}/>
                 </Route>
                 {/* when user loads this page, event emitted that they are searching */}
                 <Route path="/search">
@@ -57,7 +62,7 @@ function App() {
                     partner={partner}
                     recipies={recipies}
                     chat={chat}
-                    onNewMessage={(newMessage) => setChat(chat => [...chat, newMessage])}/>
+                    onChat={onChat} />
                 </Route>
         </Switch>
     </Router>;
