@@ -1,0 +1,35 @@
+<svg width="110" height="53" viewBox="0 0 110 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="2" width="93" height="49" rx="4" fill="#BD720D"/>
+<rect x="93" y="23" width="15" height="7" rx="2" fill="#BD720D"/>
+<circle cx="104.5" cy="26.5" r="1.5" fill="black"/>
+<line x1="2" y1="10.5" x2="95" y2="10.5" stroke="#CE8525"/>
+<line x1="2" y1="42.5" x2="95" y2="42.5" stroke="#CE8525"/>
+<line x1="2" y1="34.5" x2="95" y2="34.5" stroke="#CE8525"/>
+<line x1="2" y1="26.5" x2="95" y2="26.5" stroke="#CE8525"/>
+<line x1="2" y1="18.5" x2="95" y2="18.5" stroke="#CE8525"/>
+<circle cx="14" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="14" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="14" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="20" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="20" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="20" cy="39" r="6" fill="#F3925B"/>
+<circle cx="20" cy="39" r="6" fill="#F3925B"/>
+<circle cx="26" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="26" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="26" cy="39" r="6" fill="#F3925B"/>
+<circle cx="26" cy="39" r="6" fill="#F3B65B"/>
+<circle cx="32" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="32" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="32" cy="39" r="6" fill="#F3925B"/>
+<circle cx="32" cy="39" r="6" fill="#F3D25B"/>
+<circle cx="38" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="38" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="38" cy="39" r="6" fill="#F3925B"/>
+<circle cx="38" cy="39" r="6" fill="#CCF35B"/>
+<circle cx="44" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="44" cy="39" r="6" fill="#F35B5B"/>
+<circle cx="44" cy="39" r="6" fill="#F3925B"/>
+<circle cx="44" cy="39" r="6" fill="#84E06D"/>
+<path d="M72.0091 27.9833C72.3403 27.5413 72.967 27.4514 73.409 27.7826L88.6148 39.1749C89.0568 39.506 89.1467 40.1328 88.8155 40.5748L85.8175 44.5763C85.4864 45.0183 84.8596 45.1082 84.4176 44.777L84.3576 44.732C84.1057 44.5433 83.9574 44.247 83.9572 43.9322L83.9568 43.1822C83.9567 42.8675 83.8083 42.5712 83.5564 42.3824L81.8558 41.1083L77.6542 37.9604L70.0513 32.2643C69.6093 31.9331 69.5195 31.3064 69.8506 30.8644L72.0091 27.9833Z" fill="#353535"/>
+<path d="M37.8044 3.59038C38.4625 2.71204 39.708 2.53346 40.5863 3.19153L75.0096 28.9818L71.1082 34.1892C70.0065 35.6597 67.8537 35.8033 66.5665 34.4922L37.9193 5.31285C37.4609 4.84587 37.4121 4.11411 37.8044 3.59038V3.59038Z" fill="#C4C4C4"/>
+</svg>

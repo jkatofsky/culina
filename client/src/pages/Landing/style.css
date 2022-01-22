@@ -1,0 +1,232 @@
+body {
+    font-family: Montserrat, sans-serif;
+    background-color: #F5F6EF;
+    overflow-x: hidden;
+}
+
+/* Landing page section 1: Greeting animation */
+
+.landing-page-greeting-section {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.landing-page-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding-top: 2vw;
+    padding-left: 6vw;
+}
+
+.landing-page-brand-wrapper {
+    position: relative;
+    width: auto;
+    display: flex;
+}
+
+.landing-page-brand-text {
+    font-size: 72px;
+    color: #41787B;
+}
+
+.landing-page-brand-svg {
+    margin: 1px 0px 3px 0px;
+    transform: translateY(-8px);
+
+}
+
+/* landing page greeting */
+
+.landing-page-greeting-animation-section {
+    margin: 150px 12vw 0vw 6vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20vh;
+}
+
+.landing-page-greeting-text {
+    color: #41787B;
+    font-size: 65px;
+}
+
+.landing-page-greeting-text.animated {
+    margin-left: 15px;
+}
+
+.landing-page-greeting-text.animated.veggies {
+    color: #1ec862;
+}
+
+.landing-page-greeting-line-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+#pot-svg {
+    transform: scale(2) translateY(-40px);
+}
+
+.landing-page-greeting-scroll-down-section {
+    bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+#scroll-down-image {
+    width: 5%;
+}
+
+.three-steps-text {
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+
+
+/* easy steps section */
+.landing-page-easy-steps-section {
+    margin-top: 90px;
+    display: flex;
+    justify-content: space-around;
+}
+.landing-page-easy-step {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.easy-step-img-wrapper {
+    height: 150px;
+    display: flex;
+    justify-content: space-evenly;
+}
+#enter-info-icon,
+#match-icon {
+    transform: scale(0.9);
+}
+#cook-icon {
+    transform: scale(1.7);
+}
+
+.easy-step-text.title {
+    margin-top: 40px;
+    font-size: 25px;
+}
+.easy-step-text {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+/* landing page gets started section */
+.landing-page-get-started-section {
+    margin-top: 150px;
+    margin-bottom: 150px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#get-started-btn {
+    font-size: 30px;
+    width: 220px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #41787B;
+    border: 3px solid #41787B;
+    cursor: pointer;
+    color: #d3f9fa;
+}
+#get-started-btn:hover {
+    background-color: #4c8e91;
+}
+
+/* landing page footer */
+
+.landing-page-footer {
+    width: 100%;
+    padding: 10px;
+    padding-top: 20px;
+    background-color: #449fa4;
+}
+
+
+/* landing page user info modal */
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.landing-page-user-info-modal {
+    position: fixed;
+    opacity: 0;
+    width: 50vw;
+    height: 60vh;
+    top: 0px;
+    left: calc(50% - 25vw);
+    top: calc(50% - 30vh);
+    background-color: white;
+    border: 3px solid black;
+    box-shadow: 0px 0px 1000px 1000px rgba(0, 0, 0, 0.303);
+    border-radius: 5px;
+    animation: fade-in 0.5s ease-in-out 0s forwards;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-input {
+    width: 40vw;
+    height: 50px;
+    margin: 20px;
+    outline: none;
+    font-size: 40px;
+}
+
+#name-input {
+    margin-top: 30px;
+}
+
+#match-btn {
+    width: 10vw;
+    height: 40px;
+    font-size: 30px;
+    cursor: pointer;
+    margin-top: 15vh;
+    background-color: #449fa4;
+    border: 3px solid #41787B;
+    color: #d3f9fa;
+    border-radius: 3px;
+}
+
+#close-modal {
+    width: 10vw;
+    height: 40px;
+    font-size: 30px;
+    cursor: pointer;
+    margin-top: 2vh;
+    background-color: #449fa4;
+    border: 3px solid #41787B;
+    color: #d3f9fa;
+    border-radius: 3px;
+}
+
+#match-btn:hover {
+    background-color: #4c8e91;
+}
