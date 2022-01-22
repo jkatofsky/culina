@@ -43,14 +43,14 @@ def create_user():
 # TODO: on disconnect, delete user object and remove it from other users' match field
 
 def find_best_match(user, possible_matches, INGRED_SIMIL_THRESHOLD = 3):
-    # TODO: @ yu lu
-    # find the user with the largest intersection of ingredients
-    # if none found with intersection above threshold length, return None
+    if not possible_matches:
+        return None
+
     best_match = None
     max_nb = 0
 
     for m in possible_matches:
-        nb_same_ingred = len(set(userA.ingredients).intersection(set(m.ingredients)))
+        nb_same_ingred = len(set(user.ingredients).intersection(set(m.ingredients)))
         if nb_same_ingred >= INGRED_SIMIL_THRESHOLD and nb_same_ingred > max_nb:
             best_match = m
             max_nb = nb_same_ingred
@@ -58,8 +58,6 @@ def find_best_match(user, possible_matches, INGRED_SIMIL_THRESHOLD = 3):
     return best_match
 
 def find_common_recipies(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
-    # TODO @ yu lu
-    # first, intersect user1.ingredients and user2.ingredients, then use that to query the recipies
     common_ingredients = list(set(userA.ingredients).intersection(set(userB.ingredients)))
 
     # Returns filter with the number of common ingredients each recipe contains
@@ -85,8 +83,8 @@ def find_common_recipies(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
         final_recs = []
         for t in top_3:
             rec = {
-                "name": t["name"] #str; example: "Noodles With Eggplants and Mushrooms"
-                "ingredients": ast.literal_eval(t["ingredients_raw_str"]) #list of str, each string = ingredient + its quantity
+                "name": t["name"], #str; example: "Noodles With Eggplants and Mushrooms"
+                "ingredients": ast.literal_eval(t["ingredients_raw_str"]), #list of str, each string = ingredient + its quantity
                 "instructions": ast.literal_eval(t["steps"]) #list of str, each string = step in cooking the dish
             }
 
@@ -94,6 +92,7 @@ def find_common_recipies(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
         return final_recs
     else:
         return []  #display something like "no recipe in the dataset, want to create one with your match?"
+
 
 @socketio.on('search-for-match')
 def on_search_for_match(user_id):
