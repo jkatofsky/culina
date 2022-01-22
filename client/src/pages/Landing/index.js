@@ -8,7 +8,10 @@ export default function Landing({ onCreateUser }) {
 
     const createUser = async () => {
         const response = await apiCall('/user/create',
-            { name: nameInput, ingredients: ingredientsInput.split(',') })
+            {
+                name: nameInput,
+                ingredients: ingredientsInput.lower().replace(/\s/g, "").split(',')
+            })
         if (response) onCreateUser(response)
         
     }

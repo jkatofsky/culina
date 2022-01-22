@@ -21,13 +21,15 @@ function App() {
     const [recipies, setRecipies] = useState([]);
     const [chat, setChat] = useState([]);
 
+    const [socket, setSocket] = useState();
+
     const history = useHistory();
 
     useEffect(() => {
-        this.socket = io(SERVER_URL, { transports: ['websocket'] });
+        setSocket(io(SERVER_URL, { transports: ['websocket'] }));
         // TODO: define handlers for recieved event(s?)
         // will call onMatch at the least
-    });
+    }, []);
 
     const onCreateUser = (user) => {
         setUser(user);
