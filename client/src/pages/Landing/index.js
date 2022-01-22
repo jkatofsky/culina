@@ -20,7 +20,7 @@ export default function Landing({ onCreateUser }) {
                 'id': response['_id']['$oid']
             })['_id'];
             onCreateUser(response)
-            history.push('/search')
+            history.push('/match')
         }
     }
 

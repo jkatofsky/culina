@@ -8,7 +8,6 @@ import { io } from "socket.io-client";
 
 import { SERVER_URL } from './util';
 import Landing from './pages/Landing';
-import Search from './pages/Search';
 import Match from './pages/Match';
 
 import './App.css';
@@ -39,8 +38,6 @@ function App() {
     const onMatch = (partner, recipies) => {
         setPartner(partner)
         setRecipies(recipies)
-        // TODO: can't do this outside the router context...for createUser I moved it into the Landing component bc there's an event there...how to deal with for match?
-        // history.push('/match')
     }
 
     const onChat = (message) => {
@@ -54,17 +51,13 @@ function App() {
                 <Route exact path="/">
                     <Landing onCreateUser={onCreateUser} />
                 </Route>
-                {/* when user loads this page, event emitted that they are searching */}
-                <Route path="/search">
-                    <Search />
-                </Route>
                 {/* renders each id if they are matched with the other */}
                 <Route path="/match">
-                <Match user={user}
-                    partner={partner}
-                    recipies={recipies}
-                    chat={chat}
-                    onChat={onChat} />
+                    <Match user={user}
+                        partner={partner}
+                        recipies={recipies}
+                        chat={chat}
+                        onChat={onChat} />
                 </Route>
         </Switch>
     </Router>;
