@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -12,22 +12,27 @@ import Match from './pages/Match';
 import './App.css';
 
 function App() {
-  return <Router>
-      <Switch>
-    {/* click button and create user with id before redirecting */}
-      <Route exact path="/">
-          <Landing />
-      </Route>
-      {/* when user loads this page, event emitted that they are searching */}
-      <Route path="/search/:id">
-          <Search />
-      </Route>
-      {/* renders each id if they are matched with the other */}
-      <Route path="/match/:id1/:id2">
-          <Match />
-      </Route>
-  </Switch>
-</Router>;
+
+    const [user, setUser] = useState({});
+    const [partner, setPartner] = useState({});
+    const [recipies, setRecipies] = useState([]);
+
+    return <Router>
+            <Switch>
+                {/* click button and create user with id before redirecting */}
+                <Route exact path="/">
+                    <Landing onCreateUser={(user) => setUser(user)}/>
+                </Route>
+                {/* when user loads this page, event emitted that they are searching */}
+                <Route path="/search">
+                    <Search />
+                </Route>
+                {/* renders each id if they are matched with the other */}
+                <Route path="/match">
+                    <Match />
+                </Route>
+        </Switch>
+    </Router>;
 }
 
 export default App;
