@@ -20,7 +20,7 @@ export default function Landing({ onCreateUser }) {
         {food: 'mexican', color: 'red'}, 
         {food: 'indian', color: 'yellow'},
         {food: 'thai', color: 'green'},
-        {food: 'together', color: 'purple'},
+        {food: 'together', color: 'purple'}
     ];
 
     const history = useHistory();
