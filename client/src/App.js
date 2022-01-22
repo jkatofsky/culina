@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    useHistory
 } from "react-router-dom";
+import { io } from "socket.io-client";
 
+import { SERVER_URL } from './util';
 import Landing from './pages/Landing';
 import Search from './pages/Search';
 import Match from './pages/Match';
@@ -16,12 +19,33 @@ function App() {
     const [user, setUser] = useState({});
     const [partner, setPartner] = useState({});
     const [recipies, setRecipies] = useState([]);
+    const [chat, setChat] = useState([]);
+
+    const history = useHistory();
+
+    useEffect(() => {
+        this.socket = io(SERVER_URL, { transports: ['websocket'] });
+        // TODO: define handlers for recieved event(s?)
+        // will call onMatch at the least
+    });
+
+    const onCreateUser = (user) => {
+        setUser(user);
+        // TODO: emit searching event
+        history.push('/search');
+    }
+
+    const onMatch = (partner, recipies) => {
+        setPartner(partner)
+        setRecipies(recipies)
+        history.push('/match')
+    }
 
     return <Router>
             <Switch>
                 {/* click button and create user with id before redirecting */}
                 <Route exact path="/">
-                    <Landing onCreateUser={(user) => setUser(user)}/>
+                    <Landing onCreateUser={(user) => onCreateUser(user)}/>
                 </Route>
                 {/* when user loads this page, event emitted that they are searching */}
                 <Route path="/search">
@@ -29,7 +53,11 @@ function App() {
                 </Route>
                 {/* renders each id if they are matched with the other */}
                 <Route path="/match">
-                    <Match />
+                <Match user={user}
+                    partner={partner}
+                    recipies={recipies}
+                    chat={chat}
+                    onNewMessage={(newMessage) => setChat(chat => [...chat, newMessage])}/>
                 </Route>
         </Switch>
     </Router>;

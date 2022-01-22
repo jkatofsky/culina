@@ -1,26 +1,19 @@
 import React, { useState } from 'react';
 import { apiCall } from '../../util';
-import { Redirect } from 'react-router-dom';
 
 export default function Landing({ onCreateUser }) {
 
     const [nameInput, setNameInput] = useState('');
     const [ingredientsInput, setIngredientsInput] = useState('');
-    const [redirect, setRedirect] = useState(false);
 
     const createUser = async () => {
         const response = await apiCall('/user/create',
             { name: nameInput, ingredients: ingredientsInput.split(',') })
-        if (response) {
-            onCreateUser(response)
-            setRedirect(true);
-        }
+        if (response) onCreateUser(response)
+        
     }
 
     return <>
-        {redirect &&
-            <Redirect to={`/search`} />
-        }
         <h1>landing</h1>
         <input type="text" placeholder="Enter name"
                 value={nameInput}
