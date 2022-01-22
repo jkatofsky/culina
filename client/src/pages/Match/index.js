@@ -3,20 +3,10 @@ import React from 'react';
 import './style.css';
 
 // user/match are objects of {name, ingredients list, ID}
-// recipies is list of recipie objects (format not finalized)
-// chat is list of message objects (format not finalized)
+// recipies is list of recipie objects
+// chat is list of message objects – {name, message}
 // onChat is callback function for when this client sends new chat
 export default function Match({ user, match, recipies, chat, onChat }) {
-    // TODO: if !match, render loading state
-
-
-    // tried my best ;-; web dev is so hard eueueue
-    //rec = {
-    //"name": #str; example: "Noodles With Eggplants and Mushrooms"
-    // "ingredients": #list of str, each string = ingredient + its quantity
-    // "instructions": #list of str, each string = step in cooking the dish
-    // } We can have up to 3 such recs
-
     console.log(user, match);
     const commonIngredients = match ? user.ingredients
         .filter(ingredient => match.ingredients.includes(ingredient)) : [];
