@@ -8,4 +8,8 @@ runtime_config:
 network:
   session_affinity: true
 
-entrypoint: gunicorn --worker-class eventlet -w 1 main:app
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 7
+
+entrypoint: gunicorn --worker-class eventlet -w 1 app:app

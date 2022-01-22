@@ -126,7 +126,16 @@ def on_search_for_match(user_id):
     emit('match', {'match': user.to_json(), 'recipies': recipies}, to=match.sid)
 
 
-# TODO: chatting feature
+# TODO: test
+@socketio.on('message')
+def on_message(user_id, message):
+    try:
+        user: User = User.objects.get(pk=user_id)
+    except:
+        return
+    match = User.objects.get(pk=user.match)
+    emit('messaged', { 'sender': user.name, 'message': message }, to=match.sid)
+
 
 if __name__ == "__main__":
     socketio.run(app, port=8080, debug=True)

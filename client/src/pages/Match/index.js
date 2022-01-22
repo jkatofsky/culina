@@ -1,18 +1,7 @@
-<<<<<<< HEAD
-
-import React from 'react';
-=======
 import React, { useState } from 'react';
->>>>>>> 47c94e77a9b00cdbe0b23d8b4fbcdf35df2a0c67
 import './style.css';
 
-// user/match are objects of {name, ingredients list, ID}
-// recipies is list of recipie objects
-// chat is list of message objects – {name, message}
-// onChat is callback function for when this client sends new chat
-export default function Match({ user, match, recipies, chat, onChat }) {
-
-    console.log(user, match);
+export default function Match({ user, match, recipies, chat, onSendMessage }) {
 
     const [messageInput, setMessageInput] = useState('');
 
@@ -45,7 +34,7 @@ export default function Match({ user, match, recipies, chat, onChat }) {
                 {chat.map(message =>
                     <>
                         <p>Sender: {message["sender"]}</p>
-                        <p>Message: {message["text"]}</p>
+                        <p>Message: {message["message"]}</p>
                     </>
                 )}
             </div>
@@ -56,7 +45,7 @@ export default function Match({ user, match, recipies, chat, onChat }) {
                     onChange={evt => setMessageInput(evt.target.value)}
                 />
                 <br /><br />
-                <button onClick={() => onChat(messageInput)}>Send</button>
+                <button onClick={() => onSendMessage(messageInput)}>Send</button>
             </div>
         </>
     
