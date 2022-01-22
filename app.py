@@ -12,7 +12,7 @@ import ast
 
 app = Flask(__name__, static_folder='client/build', static_url_path='/')
 
-# app.config.from_pyfile('config.py')
+app.config.from_pyfile('config.py')
 CORS(app)
 
 db = MongoEngine()

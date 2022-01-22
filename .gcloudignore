@@ -1,0 +1,5 @@
+client/*
+!client/build/
+README.md
+deploy.sh
+.gitignore
