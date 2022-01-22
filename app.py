@@ -51,7 +51,7 @@ def find_common_recipies(user1, user2):
 # TODO: test this
 @socketio.on('search-for-match')
 def on_search_for_match(user_id):
-    
+
     user: User = User.objects.get_or_404(pk=user_id)
     user.sid = request.sid
     user.save()
@@ -63,7 +63,7 @@ def on_search_for_match(user_id):
     recipies = find_common_recipies(user, match)
 
     emit('match', match, recipies, to=user.sid)
-    emit('match', user, recipies, to=user.sid)
+    emit('match', user, recipies, to=match.sid)
 
 
 # TODO: chatting feature
