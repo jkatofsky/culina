@@ -1,54 +1,41 @@
 import React from 'react';
+import './style.css';
 
-// user/partner are objects of {name, ingredients list, ID}
+// user/match are objects of {name, ingredients list, ID}
 // recipies is list of recipie objects (format not finalized)
 // chat is list of message objects (format not finalized)
 // onChat is callback function for when this client sends new chat
-export default function Match({user, partner, recipies, chat, onChat}) {
+export default function Match({ user, match, recipies, chat, onChat }) {
+    // TODO: if !match, render loading state
+
+
+    // tried my best ;-; web dev is so hard eueueue
+    //rec = {
+                //"name": #str; example: "Noodles With Eggplants and Mushrooms"
+               // "ingredients": #list of str, each string = ingredient + its quantity
+               // "instructions": #list of str, each string = step in cooking the dish
+           // } We can have up to 3 such recs
 
     return <>
-    
-    {partner ? <div className="wrapper">
-        <header>
-            <h1> Your match: </h1>
-            <img alt="Match" title="Match!" width="200" height="200"></img> 
-            <ul>
-            <li>Name: </li>
-            <li>Role: </li>
-            <li>Pronouns: </li>
-            <li>Ingredients list: </li>
-            </ul>
-            </header>
-            <hr></hr>
-        <section id="two_column" className="clearfix">
-            <h2> Your recipes: </h2>
-
-
-                <div>
-            <div>RECIPE 1</div>
-            <img alt="Best Recipe" title="Recipe" width="100%"></img>
-            </div>
-
-            <div>
-            <div>RECIPE 2</div>
-            <div className="img1"><img alt="Second best recipe" title="Recipe" width="100%"></img></div>
-            <br></br>
-                <div>RECIPE 3</div>
-            <div className="img2"><img alt="Third best recipe" title="Recipe" width="100%"></img></div>
-            </div>
-
-        </section>
-
-
-
-        <footer>
-            &copy; Culina
-        </footer>
+    <h1>Your Match is {{ user.name }} </h1>
+    <p> Your match has the following ingredients: </p>
+    <p> {{ match.ingredients }} </p>
+    <div class="scrolling-wrapper")
+        <h2> Suggested Recipes </h2>
+        <div class = "card">
+            <h3> {{recipies[0]["name"]}} </h3>
+            <h3> {{recipies[0]["ingredients"]}} </h3> //I don't know if it'll print list nicely?
+            <h3> {{recipies[0]["instructions"]}} </h3>
         </div>
-    : 
-    <div></div>
-    }
-    
-    
-    </>;
+
+        <div class = "card"> </div>
+            <h3> {{recipies[1]["name"]}} </h3>
+        </div>
+
+        <div class = "card">
+            <h3> {{recipies[2]["name"]}} </h3>
+        </div>
+
+    </div>
+    </>
 }
