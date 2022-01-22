@@ -1,3 +1,5 @@
+
+/*
 import React from 'react';
 import './style.css';
 
@@ -39,3 +41,4 @@ export default function Match({ user, match, recipies, chat, onChat }) {
     </div>
     </>
 }
+*/

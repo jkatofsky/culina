@@ -3,7 +3,9 @@
 	overflow-y: hidden;
 	white-space: nowrap;
 
-	.card {
-		display: inline-block;
-	}
+
 }	
+
+.card {
+	display: inline-block;
+}
