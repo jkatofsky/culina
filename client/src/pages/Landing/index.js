@@ -60,7 +60,13 @@ export default function Landing({ onCreateUser }) {
             </div>
 
             {/* Scroll down image */}
-            <div className='landing-page-greeting-scroll-down-section'>
+            <div className='landing-page-greeting-scroll-down-section'
+                onClick={() => window.scroll({
+                    top: 525, 
+                    left: 0, 
+                    behavior: 'smooth'
+                  })}
+            >
                 <img id='scroll-down-img' src={scrollArrow}></img>
                 <div className='three-steps-text'>Remote Collaborative Cooking in Three Easy Steps</div>
             </div>
