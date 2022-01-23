@@ -2,28 +2,126 @@ import React, { useState } from 'react';
 import './style.css';
 import './loading-styles.css'
 
+import landingAnimation from './images/landing-page-animation.mp4';
+
 export default function Match({ user, match, recipies, chat, onSendMessage }) {
 
+
+    recipies = [{
+        "name": "German Pancakes (From the Mennonite Treasury of Recipes)",
+        "ingredients": [
+            "1 1/2  cups    flour",
+            "1/2  teaspoon    salt",
+            "3       eggs",
+            "1 3/4  cups    milk"
+        ],
+        "instructions": [
+            "Mix all together with a mixer or by hand until free of lumps.",
+            "Spray frying pan with \"Pam\" and heat over high heat until hot.",
+            "Reduce heat and pour approx 1/3 cup of batter in center and tilt to cover entire bottom of pan.",
+            "When small bubbles form and bottom begins to brown, flip and cook other side.",
+            "We like to eat these sprinkled with sugar and rolled up."
+        ],
+        "image": "https://tse4.mm.bing.net/th?id=OIP.urjf91jzYt4Ivk3Ll6dVGAAAAA&pid=Api"
+    },
+    {
+        "name": "German Pancakes (From the Mennonite Treasury of Recipes)",
+        "ingredients": [
+            "1 1/2  cups    flour",
+            "1/2  teaspoon    salt",
+            "3       eggs",
+            "1 3/4  cups    milk"
+        ],
+        "instructions": [
+            "Mix all together with a mixer or by hand until free of lumps.",
+            "Spray frying pan with \"Pam\" and heat over high heat until hot.",
+            "Reduce heat and pour approx 1/3 cup of batter in center and tilt to cover entire bottom of pan.",
+            "When small bubbles form and bottom begins to brown, flip and cook other side.",
+            "We like to eat these sprinkled with sugar and rolled up."
+        ],
+        "image": "https://tse4.mm.bing.net/th?id=OIP.urjf91jzYt4Ivk3Ll6dVGAAAAA&pid=Api"
+    },
+    {
+        "name": "German Pancakes (From the Mennonite Treasury of Recipes)",
+        "ingredients": [
+            "1 1/2  cups    flour",
+            "1/2  teaspoon    salt",
+            "3       eggs",
+            "1 3/4  cups    milk"
+        ],
+        "instructions": [
+            "Mix all together with a mixer or by hand until free of lumps.",
+            "Spray frying pan with \"Pam\" and heat over high heat until hot.",
+            "Reduce heat and pour approx 1/3 cup of batter in center and tilt to cover entire bottom of pan.",
+            "When small bubbles form and bottom begins to brown, flip and cook other side.",
+            "We like to eat these sprinkled with sugar and rolled up."
+        ],
+        "image": "https://tse4.mm.bing.net/th?id=OIP.urjf91jzYt4Ivk3Ll6dVGAAAAA&pid=Api"
+    },
+    {
+        "name": "German Pancakes (From the Mennonite Treasury of Recipes)",
+        "ingredients": [
+            "1 1/2  cups    flour",
+            "1/2  teaspoon    salt",
+            "3       eggs",
+            "1 3/4  cups    milk"
+        ],
+        "instructions": [
+            "Mix all together with a mixer or by hand until free of lumps.",
+            "Spray frying pan with \"Pam\" and heat over high heat until hot.",
+            "Reduce heat and pour approx 1/3 cup of batter in center and tilt to cover entire bottom of pan.",
+            "When small bubbles form and bottom begins to brown, flip and cook other side.",
+            "We like to eat these sprinkled with sugar and rolled up."
+        ],
+        "image": "https://tse4.mm.bing.net/th?id=OIP.urjf91jzYt4Ivk3Ll6dVGAAAAA&pid=Api"
+    }];
+
+
     const [messageInput, setMessageInput] = useState('');
+    const [selectedRecipe, setSelectedRecipe] = useState('');
 
     const commonIngredients = match ? user.ingredients
         .filter(ingredient => match.ingredients.includes(ingredient)) : [];
 
     return !match ? <>
+
+        <div className='recipes-container'>
+            {recipies.map((recipe, index) => 
+            <div key={index}>
+                <div className='recipe-title-container'>
+                    <img className='recipe-title-img' src={recipe.image}></img>
+                    <div className='recipe-title'>{recipe.name}</div>
+                    <div className='recipe-title-expand'
+                         onClick={() => selectedRecipe === recipe.name ?  setSelectedRecipe('') : setSelectedRecipe(recipe.name)}>{selectedRecipe === recipe.name ? '-' : '+'}</div>
+                </div>
+
+                <div className={`recipe-details ${selectedRecipe === recipe.name ? 'visible' : 'hidden'}`}>
+                    <div>my recipe</div>
+                </div>  
+            </div>
+            )}
+        </div>
+
+
+
+
+
+
+
+
+
+
+
     
 
     <div className='loading-animation-container'>
 
-        
+        <video id='pot-svg' width='300px' autoPlay muted loop>
+            <source src={landingAnimation} type="video/mp4"></source>
+        </video>
 
         <div className='loading-messages-container'>
-            <span className="text">Finding some yummy recipes and great company!</span>
-                <svg xmlns={"http://www.w3.org/2000/svg"} viewBox="0 0 1440 320">
-                    <path d="M0,256L48,218.7C96,181,192,107,288,90.7C384,75,480,117,576,165.3C672,213,768,267,864,261.3C960,256,1056,192,1152,176C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-                </svg>
-                <svg xmlns={"http://www.w3.org/2000/svg"} viewBox="0 0 1440 320">
-                    <path d="M0,256L48,261.3C96,267,192,277,288,256C384,235,480,181,576,160C672,139,768,149,864,144C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-                </svg>
+            <span className="text">Hold tight while we find your cooking buddy!</span>
             <span className="progress-bar"></span>
         </div>
     </div>

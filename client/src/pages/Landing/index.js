@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import './style.css';
 import spatula from './images/spatula.svg';
-import pot from './images/landing-page-animation.mp4';
+import landingAnimation from './images/landing-page-animation.mp4';
 import scrollArrow from './images/scroll-arrow.svg';
 import enterInfoImg from './images/easy_step_enter_info.svg';
 import matchImg from './images/easy_step_match.svg';
@@ -70,7 +70,7 @@ export default function Landing({ onCreateUser }) {
             {/* greeting animation */}
             <div className='landing-page-greeting-animation-section'>
                 <div className='landing-page-greeting-text-container'>
-                    <div className='landing-page-greeting-text'>Today, we're</div>
+                    <div className='landing-page-greeting-text'>today, we're</div>
                     <div className='landing-page-greeting-line-wrapper'>
                         <div className='landing-page-greeting-text'>cooking</div>
                             <div className='landing-page-animated-text-wrapper animated' onAnimationIteration={() => setAnimatedTextIndex(animatedTextIndex = (animatedTextIndex+1)%4)}>
@@ -78,12 +78,7 @@ export default function Landing({ onCreateUser }) {
                             </div>
                     </div>
                 </div>
-                <video id='pot-svg' width='400px' autoPlay muted loop>
-                    <source src={pot} type="video/mp4"></source>
-                </video>
-                {/*<video className='video' width={'300px'} autoPlay loop muted>*/}
-                    {/*<img id='pot-svg' className='pot-svg' src={pot}></img>*/}
-                {/*</video>*/}
+             
             </div>
 
             {/* Scroll down image */}

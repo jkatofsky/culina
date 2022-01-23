@@ -45,10 +45,11 @@ body {
 /* landing page greeting */
 
 .landing-page-greeting-animation-section {
-    margin: 15px 12vw 0vw 6vw;
+    margin: 150px 6vw 0px 15vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    text-align: center;
     align-items: center;
     margin-bottom: 5vh;
 }
@@ -57,6 +58,7 @@ body {
 .landing-page-greeting-text {
     color: #41787B;
     font-size: 65px;
+    text-align: left;
 }
 
 
@@ -81,16 +83,16 @@ body {
 }
 .landing-page-animated-text-wrapper.animated {
     animation: scrollIn 3s 1s ease-in-out infinite forwards;
+    text-align: left;
+    margin: 5px;
 }
 .landing-page-animated-text-wrapper.animated {
     opacity: 0;
     width: 400px;
+    margin-left: 15px;
     overflow: hidden;
 }
 
-.landing-page-greeting-text {
-    margin-left: 15px;   
-}
 .landing-page-greeting-text.red{
     color: rgb(190, 81, 81);
 }
@@ -107,6 +109,7 @@ body {
 .landing-page-greeting-line-wrapper {
     display: flex;
     flex-direction: row;
+    margin-left: 200px;
 }
 
 #pot-svg {
@@ -115,7 +118,7 @@ body {
 }
 
 .landing-page-greeting-scroll-down-section {
-    bottom: 10px;
+    margin-top: 170px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
