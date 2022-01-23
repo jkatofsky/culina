@@ -27,9 +27,11 @@ export default function Match({ user, match, recipes, chat, onSendMessage }) {
             :
             <>
                 <div className="heading">
-                    <h1>Your match is <span>{match.name}</span>!</h1>
-                    <small>You have the following ingredients in commmon:</small>
-                    <h2><i>{commonIngredients.join(', ')}</i></h2>
+                    <h1>Your match is &nbsp;<span>{match.name}</span>!</h1>
+                   
+                    <h2>
+                        <small>You have the following ingredients in commmon:</small>
+                        <i>{commonIngredients.join(', ')}</i></h2>
                 </div>
 
                 <div className='content'>
