@@ -50,7 +50,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20vh;
+    margin-bottom: 5vh;
 }
 
 
@@ -110,7 +110,7 @@ body {
 }
 
 #pot-svg {
-    transform: scale(0.9) translateY(-100px);
+    transform: scale(1.2) translateY(-75px);
     height: 500px;
 }
 
