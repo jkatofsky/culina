@@ -4,7 +4,7 @@ let SERVER_URL;
 if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
     SERVER_URL = "http://127.0.0.1:8080";
 } else {
-    SERVER_URL = "http://culina.appspot.com";
+    SERVER_URL = "https://culina-339018.appspot.com";
 }
 
 export async function apiCall(endpoint, data={}) {
