@@ -4,17 +4,18 @@ import {
     Switch,
     Route
 } from "react-router-dom";
+
 import { socket } from './util';
 import Landing from './pages/Landing';
 import Match from './pages/Match';
-
+import logo from './logo';
 import './App.css';
 
 function App() {
 
     const [user, setUser] = useState(null);
     const [match, setMatch] = useState(null);
-    const [recipies, setRecipies] = useState([]);
+    const [recipes, setRecipes] = useState([]);
     const [chat, setChat] = useState([]);
 
     const onCreateUser = (user) => {
@@ -24,7 +25,7 @@ function App() {
 
         socket.once("match", (matchObj) => {
             setMatch(JSON.parse(matchObj.match))
-            setRecipies(matchObj.recipies)
+            setRecipes(matchObj.recipes)
         });
         socket.on("messaged", (messageObj) => {
             setChat(chat => [...chat, messageObj]);
@@ -36,7 +37,9 @@ function App() {
         socket.emit('message', user.id, message);
     }
 
-    return <Router>
+    return <>
+        <div className='app-logo'>{logo}</div>
+        <Router>
             <Switch>
                 <Route exact path="/">
                     <Landing onCreateUser={onCreateUser} />
@@ -44,12 +47,13 @@ function App() {
                 <Route path="/match">
                     <Match user={user}
                         match={match}
-                        recipies={recipies}
+                        recipes={recipes}
                         chat={chat}
                         onSendMessage={onSendMessage} />
                 </Route>
         </Switch>
-    </Router>;
+    </Router>
+    </>;
 }
 
 export default App;

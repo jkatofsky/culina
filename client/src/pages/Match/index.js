@@ -4,10 +4,10 @@ import './loading-styles.css'
 
 import landingAnimation from './images/landing-page-animation.mp4';
 
-export default function Match({ user, match, recipies, chat, onSendMessage }) {
+export default function Match({ user, match, recipes, chat, onSendMessage }) {
 
-
-    recipies = [{
+    // TODO: remove
+    recipes = [{
         "name": "German Pancakes (From the Mennonite Treasury of Recipes)",
         "ingredients": [
             "1 1/2  cups    flour",
@@ -86,7 +86,7 @@ export default function Match({ user, match, recipies, chat, onSendMessage }) {
     return !match ? <>
 
         <div className='recipes-container'>
-            {recipies.map((recipe, index) => 
+            {recipes.map((recipe, index) => 
             <div key={index}>
                 <div className='recipe-title-container'>
                     <img className='recipe-title-img' src={recipe.image}></img>
@@ -103,17 +103,6 @@ export default function Match({ user, match, recipies, chat, onSendMessage }) {
         </div>
 
 
-
-
-
-
-
-
-
-
-
-    
-
     <div className='loading-animation-container'>
 
         <video id='pot-svg' width='300px' autoPlay muted loop>
@@ -127,28 +116,26 @@ export default function Match({ user, match, recipies, chat, onSendMessage }) {
     </div>
     
     
-    
-    
     </> :
         <>
             <div className="heading">
-                <h1> your match is {match.name}!</h1 >
+                <h1>Your match is <span>{match.name}</span>!</h1>
                 <small>You have the following ingredients in commmon:</small>
-                <h3>{commonIngredients.join(', ')}</h3>
+                <h2><i>{commonIngredients.join(', ')}</i></h2>
             </div>
 
             <div className='content'>
-                <div className="recipies">
-                    {!recipies ?
-                        <p> We were unable to find a recipie suggestion based on your mutual ingredients; we still encourage you to use the chat (and your imagination) to plan something delicious!</p> : <>
-                        {/* TODO: turn the recipies into accordions */}
+                <div className="recipes">
+                    {!recipes ?
+                        <p> We were unable to find a recipe suggestion based on your mutual ingredients; we still encourage you to use the chat (and your imagination) to plan something delicious!</p> : <>
+                        {/* TODO: turn the recipes into accordions */}
                         {/* TODO: turn the ingredients and instructions into bulleted lists – should be easy because they are lists alread I think */}
                             <h2>Suggested Recipes</h2>
-                            {recipies.map(recipie =>
+                            {recipes.map(recipe =>
                                 <div className="recipe-card">
-                                    <h3>{recipie.name}</h3>
-                                    <h3>{recipie.ingredients}</h3>
-                                    <h3>{recipie.instructions}</h3>
+                                    <h3>{recipe.name}</h3>
+                                    <h3>{recipe.ingredients}</h3>
+                                    <h3>{recipe.instructions}</h3>
                                 </div>)
                             }
                         </>
@@ -156,22 +143,33 @@ export default function Match({ user, match, recipies, chat, onSendMessage }) {
                 </div>
 
                 <div className="chat">
-                    <div className="vertical-scrolling-wrapper">
-                        <h2>Say hi and plan your cooking!</h2>
+                    <h2>Chat with eachother and choose a recipe!</h2>
+                    <div className="messages-wrapper">
                         {chat.map(message =>
-                                <p><b>{message.sender}</b> {message.message}</p>
+                            <div className={message.sender === user.name ? 'user-message' : 'match-message'}>
+                                <p>
+                                    <small> <b>{message.sender}</b></small><br/>
+                                    {message.message}
+                                </p>
+                            </div>
                         )}
                     </div>
-                    <div>
-                        <input type="text" placeholder="enter your message..."
+                    <div className='input-wrapper'>
+                        <input type="text" placeholder="Enter your message..."
+                            className='message-input'
                             value={messageInput}
                             onChange={evt => setMessageInput(evt.target.value)}
                         />
-                        <br /><br />
-                        <button onClick={() => {
-                            onSendMessage(messageInput);
-                            setMessageInput('');
-                        }}>Send</button>
+                        <button
+                            id='send-message-btn'
+                            onClick={() => {
+                                if (!messageInput) return;
+                                onSendMessage(messageInput);
+                                setMessageInput('');
+                            }}
+                        >
+                            Send
+                        </button>
                     </div>
                 </div>
             </div>
