@@ -1,0 +1,16 @@
+.brand-wrapper {
+    position: relative;
+    width: auto;
+    display: flex;
+    margin: 10px;
+}
+
+.brand-text {
+    font-size: 72px;
+    color: #41787B;
+}
+
+.brand-svg {
+    margin: 1px 0px 3px 0px;
+    transform: translateY(-8px);
+}

@@ -12,6 +12,7 @@ body {
 /* Landing page section 1: Greeting animation */
 
 .landing-page-greeting-section {
+    margin-top: 120px;
     position: relative;
     display: block;
     width: 100%;
@@ -23,23 +24,6 @@ body {
     display: flex;
     padding-top: 2vw;
     padding-left: 6vw;
-}
-
-.landing-page-brand-wrapper {
-    position: relative;
-    width: auto;
-    display: flex;
-}
-
-.landing-page-brand-text {
-    font-size: 72px;
-    color: #41787B;
-}
-
-.landing-page-brand-svg {
-    margin: 1px 0px 3px 0px;
-    transform: translateY(-8px);
-
 }
 
 /* landing page greeting */

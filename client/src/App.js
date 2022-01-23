@@ -4,10 +4,11 @@ import {
     Switch,
     Route
 } from "react-router-dom";
+
 import { socket } from './util';
 import Landing from './pages/Landing';
 import Match from './pages/Match';
-
+import logo from './logo';
 import './App.css';
 
 function App() {
@@ -36,7 +37,9 @@ function App() {
         socket.emit('message', user.id, message);
     }
 
-    return <Router>
+    return <>
+        <div className='app-logo'>{logo}</div>
+        <Router>
             <Switch>
                 <Route exact path="/">
                     <Landing onCreateUser={onCreateUser} />
@@ -49,7 +52,8 @@ function App() {
                         onSendMessage={onSendMessage} />
                 </Route>
         </Switch>
-    </Router>;
+    </Router>
+    </>;
 }
 
 export default App;

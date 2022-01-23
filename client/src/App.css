@@ -1,0 +1,11 @@
+.app-logo {
+    top: 20px;
+    left: 40px;
+    position: absolute;
+}
+
+@media screen and (max-width: 1000px) {
+    .app-logo {
+        display: none;
+    }
+}
