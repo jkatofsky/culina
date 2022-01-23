@@ -145,13 +145,15 @@ export default function Match({ user, match, recipes, chat, onSendMessage }) {
                 <div className="chat">
                     <h2>Chat with eachother and choose a recipe!</h2>
                     <div className="messages-wrapper">
-                        {chat.map(message =>
-                            <div className={message.sender === user.name ? 'user-message' : 'match-message'}>
+                        {chat.map(message => {
+                            const me = message.sender === user.name;
+                            return <div className={me ? 'user-message' : 'match-message'}>
                                 <p>
-                                    <small> <b>{message.sender}</b></small><br/>
+                                    <small> <b>{me ? 'Me' : message.sender}</b></small><br />
                                     {message.message}
                                 </p>
                             </div>
+                        }
                         )}
                     </div>
                     <div className='input-wrapper'>
