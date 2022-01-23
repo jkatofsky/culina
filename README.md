@@ -12,4 +12,4 @@ Built with ❤️ using React, Flask, socket.io, MongoDB, Figma, and Google Clou
 
 Additional code used to create our dataset on the Colab notebook [here](https://colab.research.google.com/drive/1w0lPeLTUeZnKtKVGYogjtGY9raeUcJUo?usp=sharing).
 
-<!-- More about the project on the [DevPost submission](TODO). -->
+More about the project on the [DevPost submission](https://devpost.com/software/culina-q8gwbm).
