@@ -3,10 +3,8 @@
 
 /* recipes */
 .recipes-container {
-        margin-top: 100px;
-        margin-bottom: 400px;
-        margin-left: 100px;
-        width: 45vw;
+        width: 55vw;
+        min-width: 450px;
         border: 1px solid black;
         border-bottom: none;
         border-radius: 5px;
@@ -26,6 +24,14 @@
 
 .recipe-title {
         font-size: 24px;
+        padding-right: 15px;
+}
+
+.recipe-title-and-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
 }
 
 .recipe-title-img {
@@ -39,6 +45,8 @@
 .recipe-title-expand {
         font-size: 50px;
         cursor: pointer;
+        width: 5%;
+        margin-right: 10px;
 }
 
 .recipe-ingredients {
@@ -120,6 +128,7 @@
 
 .content {
         padding-top: 20px;
+
         display: flex;
         align-items: flex-start;
         justify-content: space-evenly;
@@ -131,14 +140,15 @@
         font-weight: lighter;
 }
 
-.recipes {
-        width: 40vw;
-        min-width: 300px;
-}
-
 .chat {
-        width: 40vw;
-        min-width: 300px;
+        width: 35vw;
+        min-width: 450px;
+}
+.chat-wrapper {
+        border: 1px solid black;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 5px rgb(199, 199, 199);
+        padding: 5px;
 }
 
 .message-input {
@@ -151,6 +161,7 @@
 
 #send-message-btn {
         height: 40px;
+        width: 20%;
         font-size: 30px;
         cursor: pointer;
         background-color: #449fa4;
@@ -163,14 +174,15 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        margin-top: 10px;
 }
 
 .messages-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        height: 500px;
-        overflow-y: scroll;
+        height: 400px;
+        overflow-y: auto;
 }
 
 .messages-wrapper p {
@@ -180,7 +192,7 @@
 .user-message {
         display: flex;
         justify-content: flex-end;     
-        margin-right: 20px;
+        margin-right: 10px;
         margin-left: 80px;
 }
 

@@ -115,7 +115,7 @@ export default function Landing({ onCreateUser }) {
         <div className='landing-page-user-info-modal'>
 
             <div className='modal-window-title'>
-                ENTER YOUR NAME AND THE INGREDIENTS THAT YOU HAVE ACCESS TO
+                Enter your name and the ingredients that you have access to
             </div>
 
             
