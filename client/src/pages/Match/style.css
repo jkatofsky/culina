@@ -9,6 +9,7 @@
         border-bottom: none;
         border-radius: 5px;
         box-shadow: 0px 0px 10px 5px rgb(199, 199, 199);
+        overflow: hidden;
 }
 
 .recipe-title-container {
@@ -47,6 +48,7 @@
         cursor: pointer;
         width: 5%;
         margin-right: 10px;
+        color: #40787b;
 }
 
 .recipe-ingredients {
@@ -58,11 +60,13 @@
 }
 
 .ingredient {
-        border-left: 3px solid black;
-        display: inline;
+        display: block;
         padding-left: 20px;
         margin-right: 60px;
-        line-height: 40px;
+        line-height: 20px;
+        line-break: auto;
+        margin-bottom: 20px;
+        border-left: 1px solid black;
 }
 
 .recipe-details {
@@ -78,9 +82,10 @@
 }
 
 .recipe-details.visible {
-        height: 400px;
-        border-bottom: 1px solid black;
+        height: 500px;
+        border-bottom: 4px solid black;
         padding: 20px;
+        background-color: #f2ffff;
 }
 
 .instruction-container {
@@ -116,11 +121,17 @@
 
 
 .heading {
-        margin-top: 100px;
+        position: sticky;
+        background-color: white;
+        top: 0px;
+        border: 1px solid black;
+        margin-top: 120px;
         text-align: center;
+        z-index: 1;
+        padding: 5px;
 }
 .heading span {
-        color: #41787B;
+        color: #449fa4;
 }
 .heading h2 {
         margin-top: 5px;
@@ -136,6 +147,7 @@
 }
 
 .content h2 {
+        font-size: 23px;
         text-align: center;
         font-weight: lighter;
 }
@@ -143,38 +155,43 @@
 .chat {
         width: 35vw;
         min-width: 450px;
+        position: sticky;
+        top: 150px;
 }
 .chat-wrapper {
         border: 1px solid black;
         border-radius: 5px;
         box-shadow: 0px 0px 10px 5px rgb(199, 199, 199);
         padding: 5px;
+        margin-bottom: 50px;
 }
 
 .message-input {
         width: 80%;
         height: 40px;
         outline: none;
-        border-radius: 3px;
+        border-radius: 23px 0px 0px 23px;
+        padding-left: 10px;
         font-size: 20px;
 }
 
 #send-message-btn {
-        height: 40px;
+        height: 46px;
         width: 20%;
-        font-size: 30px;
+        font-size: 20px;
         cursor: pointer;
         background-color: #449fa4;
         border: 3px solid #41787B;
         color: #d3f9fa;
-        border-radius: 3px;
+        border-radius: 0px 23px 23px 0px;
 }
 
 .input-wrapper {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         margin-top: 10px;
+        margin-bottom: 50px;
 }
 
 .messages-wrapper {
@@ -202,6 +219,8 @@
         background-color: #449fa44d;
         padding: 10px;
         border-radius: 10px;
+        max-width: 350px;
+        line-break: anywhere;
 }
 
 .match-message {
@@ -217,4 +236,9 @@
         background-color: #d6dabe;
         padding: 10px;
         border-radius: 10px;
+}
+
+.app-logo {
+        left: -2px;
+        top: 6px;
 }
