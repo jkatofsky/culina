@@ -6,9 +6,9 @@ import landingAnimation from './images/landing-page-animation.mp4';
 
 export default function Match({ user, match, recipes, chat, onSendMessage }) {
 
-    // TODO: remove
+
     recipes = [{
-        "name": "German Pancakes (From the Mennonite Treasury of Recipes)",
+        "name": "German Pancakes (From the Mennonite Treasury of Recipes) 1",
         "ingredients": [
             "1 1/2  cups    flour",
             "1/2  teaspoon    salt",
@@ -25,7 +25,7 @@ export default function Match({ user, match, recipes, chat, onSendMessage }) {
         "image": "https://tse4.mm.bing.net/th?id=OIP.urjf91jzYt4Ivk3Ll6dVGAAAAA&pid=Api"
     },
     {
-        "name": "German Pancakes (From the Mennonite Treasury of Recipes)",
+        "name": "German Pancakes (From the Mennonite Treasury of Recipes) 2",
         "ingredients": [
             "1 1/2  cups    flour",
             "1/2  teaspoon    salt",
@@ -42,7 +42,7 @@ export default function Match({ user, match, recipes, chat, onSendMessage }) {
         "image": "https://tse4.mm.bing.net/th?id=OIP.urjf91jzYt4Ivk3Ll6dVGAAAAA&pid=Api"
     },
     {
-        "name": "German Pancakes (From the Mennonite Treasury of Recipes)",
+        "name": "German Pancakes (From the Mennonite Treasury of Recipes) 3",
         "ingredients": [
             "1 1/2  cups    flour",
             "1/2  teaspoon    salt",
@@ -59,7 +59,7 @@ export default function Match({ user, match, recipes, chat, onSendMessage }) {
         "image": "https://tse4.mm.bing.net/th?id=OIP.urjf91jzYt4Ivk3Ll6dVGAAAAA&pid=Api"
     },
     {
-        "name": "German Pancakes (From the Mennonite Treasury of Recipes)",
+        "name": "German Pancakes (From the Mennonite Treasury of Recipes) 4",
         "ingredients": [
             "1 1/2  cups    flour",
             "1/2  teaspoon    salt",
@@ -95,8 +95,24 @@ export default function Match({ user, match, recipes, chat, onSendMessage }) {
                          onClick={() => selectedRecipe === recipe.name ?  setSelectedRecipe('') : setSelectedRecipe(recipe.name)}>{selectedRecipe === recipe.name ? '-' : '+'}</div>
                 </div>
 
+
                 <div className={`recipe-details ${selectedRecipe === recipe.name ? 'visible' : 'hidden'}`}>
-                    <div>my recipe</div>
+
+                    <div className='recipe-ingredients'>
+                        {recipe.ingredients.map(ingr => 
+                            <div className='ingredient'>{ingr}</div>    
+                        )}
+
+                    </div>
+
+                    {recipe.instructions.map((instr, index) => 
+                        <div key={index}>
+                            <div className='instruction-container'>
+                                <div className='instruction-index'>{index+1}</div>
+                                <div className='instruction'>{instr}</div>
+                            </div>
+                        </div>
+                    )}
                 </div>  
             </div>
             )}

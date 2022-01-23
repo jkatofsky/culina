@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 
 import './style.css';
 import spatula from './images/spatula.svg';
-import landingAnimation from './images/landing-page-animation.mp4';
 import scrollArrow from './images/scroll-arrow.svg';
 import enterInfoImg from './images/easy_step_enter_info.svg';
 import matchImg from './images/easy_step_match.svg';
