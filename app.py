@@ -94,7 +94,22 @@ def find_common_recipes(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
     else:
         return []
 
-# TODO: if time permits, do disconnecting logic that deletes user documents
+
+@socketio.on('disconnect')
+def on_disconnect():
+    try:
+        user: User = User.objects.get(sid=request.sid)
+        if not user.match:
+            user.delete()
+        else:
+            match: User = User.objects.get(pk=user.match)
+            user.delete()
+            match.update(unset__match=user.match)
+            match.save()
+            emit('match-left', to=match.sid)
+    except:
+        traceback.print_exc()
+
 
 @socketio.on('search-for-match')
 def on_search_for_match(user_id):

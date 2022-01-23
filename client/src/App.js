@@ -4,6 +4,8 @@ import {
     Switch,
     Route
 } from "react-router-dom";
+import { useBeforeunload } from 'react-beforeunload';
+
 
 import { socket } from './util';
 import Landing from './pages/Landing';
@@ -24,13 +26,23 @@ function App() {
         socket.emit('search-for-match', user.id);
 
         socket.once("match", (matchObj) => {
+            console.log('test')
             setMatch(JSON.parse(matchObj.match))
             setRecipes(matchObj.recipes)
         });
         socket.on("messaged", (messageObj) => {
             setChat(chat => [...chat, messageObj]);
         });
+        socket.on("match-left", () => {
+            setRecipes([]);
+            setMatch(null);
+            setChat([]);
+        })
     }
+
+    useBeforeunload(() => {
+        socket.disconnect()
+    });
 
     const onSendMessage = (message) => {
         setChat(chat => [...chat, { sender: user.name, message }]);
@@ -44,7 +56,7 @@ function App() {
                 <Route exact path="/">
                     <Landing onCreateUser={onCreateUser} />
                 </Route>
-                <Route path="/match">
+                <Route path="/match" onLeave={() => socket.disconnect()}>
                     <Match user={user}
                         match={match}
                         recipes={recipes}
