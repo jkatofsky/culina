@@ -19,7 +19,7 @@ db.init_app(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # load in the CSV
-RECIPES = pd.read_csv("quick_health_meals.csv")
+RECIPES = pd.read_csv("quick_healthy_meals_with_images.csv")
 
 class User(db.Document):
     name = db.StringField(required=True)
@@ -85,7 +85,8 @@ def find_common_recipes(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
             rec = {
                 "name": t["name"], #str; example: "Noodles With Eggplants and Mushrooms"
                 "ingredients": ast.literal_eval(t["ingredients_raw_str"]), #list of str, each string = ingredient + its quantity
-                "instructions": ast.literal_eval(t["steps"]) #list of str, each string = step in cooking the dish
+                "instructions": ast.literal_eval(t["steps"]), #list of str, each string = step in cooking the dish
+                "image": t["image"] #url to an image of the dish
             }
 
             final_recs.append(rec)
