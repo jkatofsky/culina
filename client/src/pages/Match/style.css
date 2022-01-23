@@ -21,6 +21,7 @@
         justify-content: space-between;
         align-items: center;
         position: relative;
+        background-color: white;
 }
 
 .recipe-title {
@@ -122,19 +123,36 @@
 
 .heading {
         position: sticky;
-        background-color: white;
+        display: flex;
+        background-color: #43adb3;
         top: 0px;
         border: 1px solid black;
         margin-top: 120px;
         text-align: center;
+        justify-content: flex-start;
         z-index: 1;
-        padding: 5px;
 }
+.heading h1 {
+        vertical-align: middle;
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+}
+
+
 .heading span {
-        color: #449fa4;
+        color: #c7fcfd;
 }
 .heading h2 {
-        margin-top: 5px;
+        margin-left: 50px;
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        padding-left: 45px;
+        margin-right: 50px;
+        border-left: 1px solid black;
+        justify-content: space-around;
+        align-content: flex-end;
 }
 
 .content {
@@ -163,7 +181,6 @@
         border-radius: 5px;
         box-shadow: 0px 0px 10px 5px rgb(199, 199, 199);
         padding: 5px;
-        margin-bottom: 50px;
 }
 
 .message-input {
@@ -200,6 +217,7 @@
         justify-content: flex-end;
         height: 400px;
         overflow-y: auto;
+        background-color: white;
 }
 
 .messages-wrapper p {
