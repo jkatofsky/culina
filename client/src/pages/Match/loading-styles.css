@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+
+.loading-animation-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 300px;
+}
+
+
+
+.loading-messages-container {
+  padding: 1.1rem;
+  width: 20rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0.3rem;
+  position: relative;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.loading-messages-container .text {
+  z-index: 1;
+  position: relative;
+}
+
+.loading-messages-container svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  fill: #000000;
+  fill-opacity: 0.3;
+  animation: wave 5s linear infinite;
+  width: 20rem;
+}
+
+.loading-messages-container svg:nth-child(2) {
+  animation: wave2 5s linear infinite;
+}
+
+.loading-messages-container .progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0.2rem;
+  animation: progress 5s linear infinite;
+}
+
+@keyframes wave {
+  50% {
+    transform: rotate(1deg) translateX(-108px);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0px);
+  }
+}
+
+@keyframes wave2 {
+  50% {
+    transform: translateX(-58px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 1px;
+  }
+  100% {
+    width: 100%;
+  }
+}

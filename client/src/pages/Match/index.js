@@ -13,6 +13,9 @@ export default function Match({ user, match, recipies, chat, onSendMessage }) {
     
 
     <div className='loading-animation-container'>
+
+        
+
         <div className='loading-messages-container'>
             <span className="text">Finding some yummy recipes and great company!</span>
                 <svg xmlns={"http://www.w3.org/2000/svg"} viewBox="0 0 1440 320">
