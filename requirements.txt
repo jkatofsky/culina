@@ -5,4 +5,3 @@ flask-mongoengine
 gunicorn
 eventlet==0.30.2
 pandas
-numpy

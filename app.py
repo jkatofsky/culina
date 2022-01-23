@@ -6,7 +6,6 @@ from flask_cors import CORS
 from flask_mongoengine import MongoEngine
 
 #for recipe recommandation
-import numpy as np
 import pandas as pd
 import ast
 
@@ -62,7 +61,7 @@ def find_common_recipies(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
     common_ingredients = list(set(userA.ingredients).intersection(set(userB.ingredients)))
 
     # Returns filter with the number of common ingredients each recipe contains
-    preliminary_filter = RECIPES.ingredients.apply(lambda x: np.sum([*map(lambda l: l in x, common_ingredients)]))
+    preliminary_filter = RECIPES.ingredients.apply(lambda x: sum([*map(lambda l: l in x, common_ingredients)]))
     preliminary_recipes = RECIPES[preliminary_filter > RECIPE_INGRED_THRESHOLD]
     preliminary_recipes = preliminary_recipes.to_dict("records")
 
