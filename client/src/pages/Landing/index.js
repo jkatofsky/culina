@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import './style.css';
 import spatula from './images/spatula.svg';
-import pot from './images/pot.svg';
+import pot from './images/landing-page-animation.gif';
 import scrollArrow from './images/scroll-arrow.svg';
 import enterInfoImg from './images/easy_step_enter_info.svg';
 import matchImg from './images/easy_step_match.svg';
@@ -78,7 +78,9 @@ export default function Landing({ onCreateUser }) {
                             </div>
                     </div>
                 </div>
-                <img id='pot-svg' className='pot-svg' src={pot}></img>
+                {/*<video className='video' width={'300px'} autoPlay loop muted>*/}
+                    <img id='pot-svg' className='pot-svg' src={pot}></img>
+                {/*</video>*/}
             </div>
 
             {/* Scroll down image */}

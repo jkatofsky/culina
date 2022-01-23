@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-
-import React from 'react';
-=======
 import React, { useState } from 'react';
->>>>>>> 47c94e77a9b00cdbe0b23d8b4fbcdf35df2a0c67
 import './style.css';
 
 // user/match are objects of {name, ingredients list, ID}

@@ -4,6 +4,11 @@ body {
     overflow-x: hidden;
 }
 
+.video {
+    background-color: none;
+}
+
+
 /* Landing page section 1: Greeting animation */
 
 .landing-page-greeting-section {
@@ -40,13 +45,14 @@ body {
 /* landing page greeting */
 
 .landing-page-greeting-animation-section {
-    margin: 150px 12vw 0vw 6vw;
+    margin: 15px 12vw 0vw 6vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20vh;
 }
+
 
 .landing-page-greeting-text {
     color: #41787B;
@@ -104,7 +110,8 @@ body {
 }
 
 #pot-svg {
-    transform: scale(2) translateY(-40px);
+    transform: scale(0.9) translateY(-100px);
+    height: 500px;
 }
 
 .landing-page-greeting-scroll-down-section {
