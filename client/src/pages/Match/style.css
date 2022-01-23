@@ -1,21 +1,23 @@
-.horizontal-scrolling-wrapper {
-	overflow-x: scroll;
-	overflow-y: hidden;
-	white-space: nowrap;	
+.heading {
+        text-align: center;
 }
+
+.content {
+        padding-top: 20px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-evenly;
+}
+
+.recipies {
+        width: 40vw;
+}
+
+.chat {
+        width: 40vw;
+}
+
 .vertical-scrolling-wrapper {
-        background-color: green;
         overflow-x: hidden;
         overflow-y: auto;
 }
-
-.message-box{
-        background-color: white;
-}
-
-
-.recipe-card {
-	display: inline-block;
-}
-
-

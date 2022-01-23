@@ -97,7 +97,7 @@ export default function Landing({ onCreateUser }) {
                     </div>
                     <div className='easy-step-text-wrapper'>
                         <div className='easy-step-text title'><b>Sign Up</b></div>
-                        <div className='easy-step-text'>Start off by entering some basic information about yourslef. Don't worry, we don't store any of your data!</div>
+                        <div className='easy-step-text'>Start off by entering some basic information about yourself. Don't worry, we don't store any of your data!</div>
                     </div>
                 </div>
                 <div className='landing-page-easy-step step-2'>

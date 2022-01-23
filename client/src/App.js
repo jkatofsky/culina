@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
-import { io } from "socket.io-client";
-
-import { SERVER_URL } from './util';
+import { socket } from './util';
 import Landing from './pages/Landing';
 import Match from './pages/Match';
 
@@ -19,27 +17,23 @@ function App() {
     const [recipies, setRecipies] = useState([]);
     const [chat, setChat] = useState([]);
 
-    // TODO: figure out why I can't get the socket object in the state or a static variable for use outside this function
-    // will be a problem for the chat feature
     const onCreateUser = (user) => {
         setUser(user);
-        // console.log(user);
-        const socket = io(SERVER_URL, { transports: ['websocket'] });
-        socket.on('connect',
-            () => socket.emit('search-for-match', user.id))
-        socket.on("match", (matchObj) => {
-            onMatch(JSON.parse(matchObj.match), matchObj.recipies);
+
+        socket.emit('search-for-match', user.id);
+
+        socket.once("match", (matchObj) => {
+            setMatch(JSON.parse(matchObj.match))
+            setRecipies(matchObj.recipies)
+        });
+        socket.on("messaged", (messageObj) => {
+            setChat(chat => [...chat, messageObj]);
         });
     }
 
-    const onMatch = (match, recipies) => {
-        setMatch(match)
-        setRecipies(recipies)
-    }
-
-    const onChat = (message) => {
-        setChat(chat => [...chat, { sender: user.name, text: message }]);
-        // TODO: emit chatting event to match
+    const onSendMessage = (message) => {
+        setChat(chat => [...chat, { sender: user.name, message }]);
+        socket.emit('message', user.id, message);
     }
 
     return <Router>
@@ -52,7 +46,7 @@ function App() {
                         match={match}
                         recipies={recipies}
                         chat={chat}
-                        onChat={onChat} />
+                        onSendMessage={onSendMessage} />
                 </Route>
         </Switch>
     </Router>;

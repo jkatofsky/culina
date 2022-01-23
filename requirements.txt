@@ -2,7 +2,7 @@ flask
 flask-socketio
 flask-cors
 flask-mongoengine
-eventlet
+gunicorn
+eventlet==0.30.2
 pandas
-ast
 numpy
