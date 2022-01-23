@@ -57,7 +57,7 @@ def find_best_match(user, possible_matches, INGRED_SIMIL_THRESHOLD = 3):
     return best_match
 
 
-def find_common_recipies(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
+def find_common_recipes(userA, userB, RECIPE_INGRED_THRESHOLD = 2):
     common_ingredients = list(set(userA.ingredients).intersection(set(userB.ingredients)))
 
     # Returns filter with the number of common ingredients each recipe contains
@@ -117,12 +117,12 @@ def on_search_for_match(user_id):
     user.save()
     match.save()
 
-    recipies = find_common_recipies(user, match)
+    recipes = find_common_recipes(user, match)
     # print(user.ingredients, match.ingredients)
-    # print(recipies)
+    # print(recipes)
 
-    emit('match', {'match': match.to_json(), 'recipies': recipies}, to=user.sid)
-    emit('match', {'match': user.to_json(), 'recipies': recipies}, to=match.sid)
+    emit('match', {'match': match.to_json(), 'recipes': recipes}, to=user.sid)
+    emit('match', {'match': user.to_json(), 'recipes': recipes}, to=match.sid)
 
 
 @socketio.on('message')

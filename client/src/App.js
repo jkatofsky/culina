@@ -14,7 +14,7 @@ function App() {
 
     const [user, setUser] = useState(null);
     const [match, setMatch] = useState(null);
-    const [recipies, setRecipies] = useState([]);
+    const [recipes, setRecipes] = useState([]);
     const [chat, setChat] = useState([]);
 
     const onCreateUser = (user) => {
@@ -24,7 +24,7 @@ function App() {
 
         socket.once("match", (matchObj) => {
             setMatch(JSON.parse(matchObj.match))
-            setRecipies(matchObj.recipies)
+            setRecipes(matchObj.recipes)
         });
         socket.on("messaged", (messageObj) => {
             setChat(chat => [...chat, messageObj]);
@@ -44,7 +44,7 @@ function App() {
                 <Route path="/match">
                     <Match user={user}
                         match={match}
-                        recipies={recipies}
+                        recipes={recipes}
                         chat={chat}
                         onSendMessage={onSendMessage} />
                 </Route>

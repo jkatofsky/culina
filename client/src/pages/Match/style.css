@@ -1,24 +1,98 @@
 .heading {
         text-align: center;
 }
+.heading span {
+        color: #41787B;
+}
+.heading h2 {
+        margin-top: 5px;
+}
 
 .content {
         padding-top: 20px;
         display: flex;
         align-items: flex-start;
         justify-content: space-evenly;
+        flex-wrap: wrap;
 }
 
-.recipies {
+.content h2 {
+        text-align: center;
+        font-weight: lighter;
+}
+
+.recipes {
         width: 40vw;
+        min-width: 300px;
 }
 
 .chat {
         width: 40vw;
+        min-width: 300px;
 }
 
-.vertical-scrolling-wrapper {
-        overflow-x: hidden;
-        overflow-y: auto;
+.message-input {
+        width: 80%;
+        height: 40px;
+        outline: none;
+        border-radius: 3px;
+        font-size: 20px;
 }
 
+#send-message-btn {
+        height: 40px;
+        font-size: 30px;
+        cursor: pointer;
+        background-color: #449fa4;
+        border: 3px solid #41787B;
+        color: #d3f9fa;
+        border-radius: 3px;
+}
+
+.input-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+}
+
+.messages-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 500px;
+        overflow-y: scroll;
+}
+
+.messages-wrapper p {
+        margin: 5px 0 5px 0;
+}
+
+.user-message {
+        display: flex;
+        justify-content: flex-end;     
+        margin-right: 20px;
+        margin-left: 80px;
+}
+
+.user-message p {
+        width: fit-content;
+        font-size: larger;
+        background-color: #449fa44d;
+        padding: 10px;
+        border-radius: 10px;
+}
+
+.match-message {
+        display: flex;
+        justify-content: flex-start;     
+        margin-left: 20px;
+        margin-right: 80px;
+}
+
+.match-message p {
+        width: fit-content;
+        font-size: larger;
+        background-color: #d6dabe;
+        padding: 10px;
+        border-radius: 10px;
+}
