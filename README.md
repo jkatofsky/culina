@@ -2,6 +2,9 @@
 
 ## Remote collaborative cooking made easy
 
+
+![gallery](https://user-images.githubusercontent.com/40658078/150818937-adb4b3d8-f0cd-443b-a583-f3dca42859e1.jpeg)
+
 ### By Yu Lu Liu, Josh Katofsky, David Peterman, and Camilla Djamalov
 
 Our McHacks 9 project! A WFH hack where you input the groceries you have on hand and get matched up with another user with a similar pantry. Then, use our built-in chat feature to choose from curated list of recipies that match your shared ingredients and coordinate how you'll prepare the meal together.
