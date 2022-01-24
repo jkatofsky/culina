@@ -25,8 +25,7 @@ function App() {
 
         socket.emit('search-for-match', user.id);
 
-        socket.once("match", (matchObj) => {
-            console.log('test')
+        socket.on("match", (matchObj) => {
             setMatch(JSON.parse(matchObj.match))
             setRecipes(matchObj.recipes)
         });

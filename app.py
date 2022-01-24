@@ -102,6 +102,7 @@ def on_disconnect():
         if not user.match:
             user.delete()
         else:
+            # TODO: see if this is working
             match: User = User.objects.get(pk=user.match)
             user.delete()
             match.update(unset__match=user.match)
@@ -134,8 +135,6 @@ def on_search_for_match(user_id):
     match.save()
 
     recipes = find_common_recipes(user, match)
-    # print(user.ingredients, match.ingredients)
-    # print(recipes)
 
     emit('match', {'match': match.to_json(), 'recipes': recipes}, to=user.sid)
     emit('match', {'match': user.to_json(), 'recipes': recipes}, to=match.sid)
@@ -143,7 +142,6 @@ def on_search_for_match(user_id):
 
 @socketio.on('message')
 def on_message(user_id, message):
-    # print('messaging!')
     try:
         user: User = User.objects.get(pk=user_id)
         match: User = User.objects.get(pk=user.match)
