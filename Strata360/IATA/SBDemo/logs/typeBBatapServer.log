@@ -1,0 +1,2 @@
+2021-10-12 15:12:58,741 INFO c.j.App [main] Sender initiated
+2021-10-12 15:12:58,777 INFO c.j.App [boundedElastic-2] Processing message. Session: ef933d3d46134eabb53b98f46a6ad209 Sequence 377 MessageID ef933d3d46134eabb53b98f46a6ad209 EnqueuedTime 2021-10-12T19:12:58.703Z Body Dummy Message

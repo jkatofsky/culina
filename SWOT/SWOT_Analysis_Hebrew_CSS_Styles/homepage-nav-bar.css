@@ -1,0 +1,40 @@
+/* Styles for navbar in homepage and all other pre-login pages */
+
+
+.navwhiteback {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.w-nav-brand {
+  float: right;
+}
+.navbutton.home {
+  margin-left: 32px;
+  margin-right: 0px;
+}
+.splashsimplelogo {
+  margin-left: 0px;
+  margin-right: 32px;
+}
+
+
+/* Pancake dropdown (smaller screen sizes) */
+@media screen and (max-width: 991px) {
+  .w-nav[data-collapse=medium] .w-nav-button {
+    float: left;
+  }
+  .navbutton.home {
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 25px;
+    text-align: right;
+  }
+  .navbutton.home.w--current {
+    padding-left: 0px;
+    padding-right: 25px;
+  }
+  #sitetran_translate_wrapper {
+    float: left;
+  }
+}

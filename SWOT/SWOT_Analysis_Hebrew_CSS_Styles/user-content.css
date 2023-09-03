@@ -1,0 +1,92 @@
+/* Styles for content that is added by user. This includes SWOT entries, activity feed, etc. */
+/* URL: https://www.swotanalysis.com/board/[board-id] */
+
+
+/* Section: User SWOT Entries */
+
+.objective-title-word.boardspot {
+  margin-right: 0px;
+  margin-left: 10px;
+}
+.objective-score-number.percent {
+  padding-right: 0px;
+  padding-left: 6px;
+  text-align: left;
+}
+.sentiment-color.none,
+.sentiment-color.red,
+.sentiment-color.yellow {
+  margin-left: 0px;
+  margin-right: 5px;
+}
+.key-result-description.boardspot {
+  margin-right: 10px;
+  margin-left: 5px;
+  text-align: right;
+}
+.notes-icon-area.notes-icon {
+    margin-left: 7px;
+    margin-right: -2px;
+}
+
+
+/* Section: Edit or Add Note to Entry */
+
+.key-result-text {
+  margin-right: 0px;
+  margin-left: 5px;
+}
+.item-features-options {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.multi-plan--choose-icon {
+  margin: 0px 0px 0px 5px;
+}
+.add-notes-link.combined {
+  margin-right: 0px;
+  margin-left: 17px;
+}
+.item-metric {
+  margin-right: 0px;
+  margin-left: 12px;
+}
+.plan-assign-owner.key-result.item-user {
+  margin-right: 8px;
+  margin-left: 0px;
+}
+.item-save-close-div.combined {
+  min-width: 144px;
+  float: right;
+}
+.plan-add-button.save-item-button {
+  margin-right: 0px;
+  margin-left: 7px;
+}
+.notes-drop-menu-box {
+  padding-right: 20px;
+  padding-left: 0px;
+}
+.notes-box-area.note-panel.boardmacro {
+  text-align: right;
+  margin-right: 0px;
+  margin-left: 1px;
+}
+
+
+/* Section: Activity Feed */
+
+.history-bar.plan-activity {
+  float: right;
+}
+.close-history-bar {
+  float: left;
+}
+.activity2-project-title.project-actvity2 {
+  text-align: right;
+}
+.activity2-project-details {
+  text-align: right;
+  margin-right: 15px;
+  margin-left: 0px;
+}

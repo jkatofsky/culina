@@ -1,0 +1,314 @@
+<!-- 
+<video muted playsinline autoplay loop id="video-player" style="height:250px; width:400px;"></video> 
+-->
+
+<script>
+
+    let current_step;
+    let progressBar;
+    let video_player;
+
+    let caret_img_url = 'https://uploads-ssl.webflow.com/619d1ed6c0ec74aa1790fc66/6230f471639730bc6d88069d_down-caret.svg';
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+
+        get_video_html = (step_number) => {
+            let vid_element = `<video muted playsinline autoplay loop step-id="${step_number}" id="video-player" style="width:100%; height:100%;"></video>`; // height used to be auto. 
+
+            return vid_element;
+        }
+
+        // add the video element to the vid-goes-here
+        // CONSIDERR ADDING THE SOURCE FOR THE FIRST VIDEO IN HERE!
+        $('#vid-goes-here').html(get_video_html(0));
+        video_player = document.getElementById("video-player");
+
+        if (all_steps.length <= 2) console.warn("WARNING: You should have more than 2 steps!");
+
+        update_progress_bar(true, all_steps.length, 1);
+        updateVideo(0); // Here we set the first video
+        document.getElementById('video-player').play(); // NOT NEEDED --> this is so that it plays on ios
+        setCorrectButtons();
+
+        document.getElementById("next-step").addEventListener("click", runNextStep);
+
+        document.getElementById("previous-step").addEventListener("click", runPreviousStep);
+
+        document.getElementById("pause-step").addEventListener("click", runPausePlay);
+
+        video_player.addEventListener("click", runPausePlay);
+
+        $(document).on('click', '.toc-li', () => {
+            let selected_table_contents_step = parseInt($(this).attr('stepnumberdata'));
+            updateVideo(selected_table_contents_step);
+        });
+
+        document.getElementById("parts-list-button").addEventListener("click", () => {
+
+            let inner_popup = '<div>'
+
+            //for (let i in all_parts) inner_popup += `<img style="width:50%;" src="${all_parts[i]}">`
+            inner_popup = table_of_contents_current_step(current_step);
+            inner_popup += '</div>';
+
+            $.dialog({
+                title: 'Parts List',
+                content: inner_popup,
+                draggable: false,
+                escapeKey: true,
+                closeIcon: true,
+                backgroundDismiss: true,
+                useBootstrap: false,
+                boxWidth: '90%',
+            });
+        });
+
+        document.getElementById("instruction-manual-button").addEventListener("click", (e) => {
+            e.preventDefault()
+            let pdf_instruction_manual_url = 'https://assets.ctfassets.net/g7zopbybs1ea/3Bngv1Q47HZmmiSi7DADSo/78f6714866af4856bff1f013e9feaf1f/mt4500_ai_xsm_20170118.pdf' // needs to be set in init object.
+            let inner_popup = `<iframe src="${pdf_instruction_manual_url}" width="100%" height="800px">`
+
+            $.dialog({
+                title: 'Instruction Manual',
+                content: inner_popup,
+                draggable: false,
+                escapeKey: true,
+                closeIcon: true,
+                backgroundDismiss: true,
+                useBootstrap: false,
+                boxWidth: '90%',
+            });
+        });
+
+        var check_if_video_loaded = () => {
+
+            if (video_player.readyState === 4) {
+
+                if (video_player.paused) {
+                    //video_player.play();
+                    $('.vid-goes-here').show();
+                    $('.video-loading-animation-container').hide();
+                    $('#pause-step').html(play_button_html);
+                    setTimeout(check_if_video_loaded, 100);
+                } else {
+                    $('.vid-goes-here').show();
+                    $('.video-loading-animation-container').hide();
+                    $('#pause-step').html(pause_button_html);
+                }
+
+            } else {
+                $('.video-loading-animation-container').show();
+                $('.vid-goes-here').hide();
+
+                $('#pause-step').html(play_button_html);
+                setTimeout(check_if_video_loaded, 100);
+            }
+        }
+
+        check_if_video_loaded();
+
+    });
+
+    function runPausePlay() {
+        // this might throw errors if we don't have a video in the player.
+        if (video_player.paused == false) {
+            video_player.pause();
+            $('#pause-step').html(play_button_html);
+        } else {
+            video_player.play();
+            $('#pause-step').html(pause_button_html);
+        }
+    }
+
+    let setCorrectButtons = () => {
+        let left_button = document.getElementById("previous-step");
+        let right_button = document.getElementById("next-step");
+        if (current_step == 0) {
+            left_button.classList.add("circle-control-button-disabled");
+            left_button.classList.remove("circle-control-button");
+            right_button.classList.add("circle-control-button");
+            right_button.classList.remove("circle-control-button-disabled");
+        } else if (current_step == all_steps.length - 1) {
+            right_button.classList.add("circle-control-button-disabled");
+            right_button.classList.remove("circle-control-button");
+            left_button.classList.add("circle-control-button");
+            left_button.classList.remove("circle-control-button-disabled");
+        } else {
+            right_button.classList.add("circle-control-button");
+            right_button.classList.remove("circle-control-button-disabled");
+            left_button.classList.add("circle-control-button");
+            left_button.classList.remove("circle-control-button-disabled");
+        }
+    };
+
+    // document.getElementById("next-step").addEventListener("click", runNextStep);
+
+    let runNextStep = () => {
+        if (current_step == all_steps.length - 1) return;
+        if (current_step < all_steps.length) current_step++;
+        updateVideo(current_step);
+        setCorrectButtons();
+    };
+
+    let runPreviousStep = () => {
+        if (current_step == 0) return;
+        if (current_step > 0) current_step--;
+        updateVideo(current_step);
+        setCorrectButtons();
+    };
+
+    let updateVideo = (step_number) => {
+
+
+
+        // !!!!!  there was a bunch of commented-out code here that I copy pasted to
+        // embedded code (very last one) in order to respect the 10000 character limit !!!!!
+
+        // check if video already exists on the page
+
+        // if it exists on the page then hide the current playing video
+
+        // otherwise create a new video element
+
+        let video_player = document.getElementById('video-player');
+
+        if (video_player.readyState === 4) { // it's loaded, 
+
+            video_player.style.height = video_player.offsetHeight + 'px'; // set the correct height (no flickering when switching steps).
+        }
+
+        let vid_source = all_steps[step_number].source;
+        video_player.src = vid_source;
+
+        current_step = step_number; // we need to call this before updating the table of content, because we rely on current_step.
+
+        updateTableOfContents(step_number); // We update the table of contents with correct images.
+        updateStepDropdown(step_number);
+        update_progress_bar(false, all_steps.length, current_step + 1);
+
+    };
+
+    function table_of_contents_not_current_step(step_number) {
+        let step = `<li class="toc-li" stepNumberData="${step_number}" style="list-style-type: none;">
+    <div class="step_text_not_current">${all_steps[step_number].step_name}</div>
+    <img src="${caret_img_url}" loading="lazy" width="10" alt="dropdown caret">  
+    </li>`;
+        return step;
+    }
+
+    function table_of_contents_current_step(step_number) {
+        let step_name = all_steps[step_number].step_name;
+        let step_tool_images_html = '';
+        let step_part_images_html = '';
+
+        // Get all tool images html
+        for (let i = 0; i < all_steps[step_number].step_tools.length; i++) {
+            // loading lazy???
+            step_tool_images_html += `<img src="${all_tools[all_steps[step_number].step_tools[i]]}" loading="lazy" alt="">`
+        }
+
+        // Get all part images html
+        for (let i = 0; i < all_steps[step_number].step_parts.length; i++) {
+            // loading lazy???
+            step_part_images_html += `<img src="${all_parts[all_steps[step_number].step_parts[i]]}" loading="lazy" alt="">`
+        }
+
+        var step_tools_html = '';
+        if (step_tool_images_html.length > 0) {
+            step_tools_html = `<div class="contains-step-tools">
+    <div class="tools_and_parts_text">Tools:</div>
+    <div class="step-tools-images">
+    ${step_tool_images_html}
+    </div>
+    </div>`;
+        }
+
+        let current_step_html = `
+    <li class="current_step" style="list-style-type: none;">
+    <div class="current-step-container">
+    <div class="current_step_text">${step_name}</div>
+    <img class="caret-up" src="${caret_img_url}" loading="lazy" width="10" alt="dropdown caret">
+    </div>
+    ${step_tools_html}
+    <div class="contains-step-parts">
+    <div class="tools_and_parts_text">Parts:</div>
+    <div class="step-parts-images">
+    ${step_part_images_html}
+    </div>
+    </div>
+    </li>`
+
+        return current_step_html;
+    }
+
+    let updateTableOfContents = function (step_number) {
+
+        let table_of_contents_html = '<ul role="list" class="step-list">'; // this is the START
+
+        // here we add each step to the table of contents
+        for (let i = 0; i < all_steps.length; i++) {
+            if (i == current_step) table_of_contents_html += table_of_contents_current_step(i);
+            else table_of_contents_html += table_of_contents_not_current_step(i); // not the current step.
+        }
+
+        table_of_contents_html += '</ul>'; // this is the END
+
+        $('.table-of-contents').html(table_of_contents_html);
+        setCorrectButtons();
+    }
+
+    document.onkeydown = function (e) {
+        switch (e.keyCode) {
+            case 37:
+                //Left key pressed
+                runPreviousStep();
+                break;
+            case 39:
+                //Right key pressed
+                runNextStep();
+                break;
+            case 32:
+                //Space bar pressed
+                e.preventDefault();
+                runPausePlay();
+                break;
+        }
+    };
+
+    let update_progress_bar = function (is_new, total_steps, current_step) {
+
+        let percent_completed = current_step / total_steps * 100;
+        percent_completed = percent_completed.toFixed(0)
+
+        if (is_new) {
+            progressBar = new Bar(document.getElementById('contains-progress-bar'), {
+                values: [{
+                    title: 'Step',
+                    numVal: current_step,
+                    color: '#222C41',
+                    tooltipContent: "" + current_step + "/" + total_steps + " Steps"
+                }],
+                totalValue: {
+                    title: 'Progress',
+                    tooltipContentTotal: "" + percent_completed + "% Completed",
+                    numVal: total_steps,
+                    tooltipMaxWidth: '120px'
+                }
+            });
+        } else {
+            // update existing bar
+            progressBar.set_bar_values([{ numVal: current_step }], total_steps);
+            progressBar.set_bar_tooltips([
+                {
+                    title: 'Step',
+                    tooltipContent: "" + current_step + "/" + total_steps + " Steps"
+                },
+                {
+                    title: 'Progress',
+                    tooltipContent: "" + percent_completed + "% Completed",
+                }
+            ])
+        }
+    }
+
+</script>

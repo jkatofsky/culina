@@ -1,0 +1,86 @@
+/* url:  https://www.swotanalysis.com/activity# */
+
+
+/* Section: Whole Page */
+
+.feedrow.w-row {
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* Section: Search button and its whole row */
+
+.searchwrapperfeed.w-clearfix.w-form {
+  width: auto;
+}
+.search-feed.searchfeedform {
+  float: left;
+}
+.searchbt.feed.w-button {
+  margin-left: 0px;
+  border-radius: 3px 0px 0px 3px;
+}
+.search-box.side.feed.w-input {
+  border-radius: 0px 3px 3px 0px;
+}
+.activity-create-plus-icon.lazyloaded {
+  margin-right: 20px;
+  margin-left: 18px;
+}
+
+
+/* Section: Resources */
+
+.formatside.learningheader.feed.activity.resource-label.activity-feed.w-button {
+  text-align: right;
+  margin-left: 0px;
+  margin-right: 20px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-bottom: 9px;
+  padding-top: 9px;
+}
+.text-block.templatetile._13.act-new.activity-feed {
+  margin-right: 20px;
+  font-family: Montserrat,sans-serif;
+  font-size: 13px;
+  text-align: right;
+}
+
+
+/* Section: Activity */
+.activity2-area.w-clearfix {
+  text-align: right;
+}
+.activity2-project-title.title-toggle {
+  text-align: right;
+}
+.link-27 {
+  margin-right: 0px;
+  margin-left: 7px;
+}
+.activity-team-name.team-toggle {
+  text-align: right;
+  margin-right: 0px;
+  margin-left: 7px;
+}
+.activity2-card {
+  padding-right: 0px;
+  padding-left: 8px;
+}
+.activity2-project-details {
+  margin-left: 0px;
+  margin-right: 15px;
+  text-align: right;
+}
+
+
+/* Small screen sizes */
+
+@media screen and (max-width: 767px) {
+  .feedrow.w-row {
+    display: flex;
+    flex-direction: column;
+  }
+}

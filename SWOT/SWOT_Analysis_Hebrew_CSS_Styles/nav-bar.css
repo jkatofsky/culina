@@ -1,0 +1,54 @@
+/* Styles for nav bar on every page that is seen once user logs in */
+
+
+.cmobilenav {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+}
+.basicdropbac.w--open {
+  right: -138px;
+  left: -20px;
+}
+.sitenavlink.w-nav-link.w--current {
+  order: 1;
+}
+.sitenavlink.w-nav-link {
+  order: 2;
+}
+.sitenavlink.w-nav-link {
+  order: 3;
+}
+.cmobilenav.w-clearfix.w-nav-menu > .globe-icon {
+  order: 4;
+  width: 77%;
+}
+.namenvaedrop.cdrop.w-dropdown {
+  order: 5;
+}
+
+
+/* sub-nav-bar */
+
+.iconbar {
+  text-align: left;
+  padding-right: 0px;
+  padding-left: 35px;
+}
+
+@media screen and (max-width: 991px) {
+  .cmobilenav.w-clearfix.w-nav-menu {
+    display: none;
+  }
+  .sitenavlink.w--current {
+    padding-right: 25px;
+  }
+  .sitenavlink.w-nav-link {
+    margin-right: 0px;
+    padding-right: 25px;
+    text-align: right;
+  }
+  #sitetran_translate_wrapper {
+    margin-right: 30px;
+  }
+}

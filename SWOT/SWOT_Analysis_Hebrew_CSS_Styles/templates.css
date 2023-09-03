@@ -1,0 +1,21 @@
+
+/* https://www.swotanalysis.com/templates */
+
+
+/* Section: Templates */
+
+.directory-items {
+  text-align: right;
+  margin-right: 50px;
+  margin-left: 25px;
+}
+
+
+/* Section: Template Categories */
+
+.directory-labels,
+.directory-category-topics {
+  text-align: right;
+  margin-right: 10px;
+  padding-right: 5px;
+}

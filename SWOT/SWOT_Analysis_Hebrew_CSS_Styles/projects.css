@@ -1,0 +1,72 @@
+/* Page url: https://www.swotanalysis.com/projects */
+
+/* Section: Project Filters/Options */
+
+.myform.sideswot {
+  text-align: right;
+  padding-left: 10px;
+  padding-right: 0px;
+}
+.myswotcheck {
+  display: flex;
+}
+.check6 {
+  padding-right: 28px;
+}
+.searchbt.project-search-bt {
+  margin: 15px 1px 40px auto;
+}
+
+
+/* Section: Activity */
+
+.myswotrow.headerarea.pnav {
+  text-align: right;
+}
+.project-choice {
+  float: right;
+}
+.column-80 {
+  padding-left: 10px;
+  padding-right: 0px;
+}
+.projects-nav.choice.projects-link-active,
+.projects-nav.choice.projects-link-inactive {
+  margin-right: auto;
+  margin-left: 40px;
+}
+.swots-edit-drop {
+  padding-left: 40px;
+  padding-right: 0px;
+}
+.dot-dot-dot {
+  margin-left: 0px;
+  margin-right: 12px;
+}
+.myswottitle.bold.centerusers.straight.uposts.centered {
+  padding-right: 0px;
+  padding-left: 15px;
+}
+.myswotswotrow.toplist {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: right;
+}
+
+
+/* Smaller screen sizes */
+
+@media screen and (max-width: 767px) {
+  .dot-dot-dot {
+    margin-right: 0px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .sitenavlink,
+  .sitenavlink.w--current {
+    padding-right: 15px;
+    margin: 0px;
+    text-align: right;
+  }
+
+}

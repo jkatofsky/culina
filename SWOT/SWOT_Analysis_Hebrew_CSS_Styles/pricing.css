@@ -1,0 +1,15 @@
+/* Page url: https://www.swotanalysis.com/pricing.html */
+
+
+/* Section: Pricing plans */
+
+.confirmpricetext.pricing-mod {
+  text-align: right;
+  padding-left: 0px;
+  padding-right: 30px;
+}
+
+.pricebox.price.upgrade-page.pricing-mod.w-row {
+  padding-right: 0px;
+  padding-left: 10px;
+}

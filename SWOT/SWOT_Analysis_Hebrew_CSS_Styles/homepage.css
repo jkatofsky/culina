@@ -1,0 +1,102 @@
+
+/* Styles for url: https://www.swotanalysis.com/ */
+
+
+/* Section: Main Greeting Message */
+
+.title-sub-header.start-with-swot.jumbo.home-max.white {
+    padding-left: 25px;
+    padding-right: 0px;
+}
+.title-sub-header.start-with-swot.jumbo.home-max.white,
+.jumbo-one-line {
+  text-align: right;
+}
+@media screen and (max-width: 991px) {
+  .title-sub-header.start-with-swot.jumbo.home-max.white,
+  .jumbo-one-line {
+    text-align: center;
+  }
+}
+
+.jumbo-get-started.home-left.home-two {
+  float: right;
+}
+@media screen and (max-width: 991px) {
+  .jumbo-get-started.home-left.home-two {
+    float: none;
+  }
+}
+
+.createformatbt.feature-bt.home-what.panel-bt.newjumbo.j-left.saright.home-lg.home-two.w-button {
+  margin-right: 0px;
+  margin-left: 8px;
+}
+
+.google-icon.oath-homepage.lazyloaded {
+  margin-right: 0px;
+  margin-left: 10px;
+}
+
+/* Section: #1 SWOT Analysis Tool */
+
+.pa2col.w-col.w-col-7 {
+  text-align: left;
+}
+
+
+.featurescolum2.left.prd.w-col.w-col-5,
+.featureheader.alignright.pa2.prd.left {
+  text-align: right;
+}
+@media screen and (max-width: 991px) {
+  .featurescolum2.left.prd.w-colw-col-5 {
+    text-align: center;
+  }
+}
+
+.featuredsubtxt.alignright.featuredescr.pa2.prd {
+  padding-right: 30px;
+  padding-left: 0px
+}
+@media screen and (max-width: 991px) {
+  .featuredsubtxt.alignright.featuredescr.pa2.prd {
+    padding-right: 0px;
+    padding-left: 0px
+  }
+}
+
+
+
+/* Section: How to Perform a SWOT Analysis | Coaching Video */
+
+.mission-statement,
+.swot-analysis-weaknesses,
+.swot-analysis-opportunities,
+.swot-analysis-threats,
+.swot-analysis-strengths {
+  text-align: right;
+}
+.text-block-63 {
+  margin-right: 20px;
+}
+
+
+/* Section: Footer */
+
+.footerrow.home.w-row {
+  text-align: right;
+}
+
+
+/* Styles inside pancake when screen size < 991px */
+@media screen and (max-width: 991px){
+  .navbutton.home {
+    text-align: right;
+    padding-left: 0px;
+    padding-right: 25px;
+  }
+  .globe-icon {
+    float: left;
+  }
+}

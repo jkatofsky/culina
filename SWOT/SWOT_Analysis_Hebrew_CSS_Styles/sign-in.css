@@ -1,0 +1,42 @@
+/* page url: https://www.swotanalysis.com/sign-in */
+
+
+/* Section: sign-in form */
+
+.minijumbotext.small.new-user-upsell {
+  text-align: right;
+  margin-left: 0px;
+  margin-right: 40px;
+}
+.google-icon.lazyloaded {
+  margin-right: 0px;
+  margin-left: 20px;
+}
+
+/* Section: New to SWOT Analysis */
+.login-row-two.w-col.w-col-6 {
+  padding-right: 30px;
+}
+.minijumbotext.small.newuser,
+.new-user-text {
+  text-align: right;
+  padding-left: 0px;
+  padding-right: 25px;
+}
+
+
+
+/* Smaller screen sizes */
+@media screen and (max-width: 767px) {
+  .minijumbotext.small.new-user-upsell {
+    margin-right: 0px;
+    text-align: center;
+  }
+  .minijumbotext.small.newuser, .new-user-text {
+    text-align: center;
+    padding: 0px;
+  }
+  .login-row-two.w-col.w-col-6 {
+    padding-right: 10px;
+  }
+}

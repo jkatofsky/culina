@@ -1,0 +1,112 @@
+/* Styles for all SWOT Templates */
+
+/* Styles for only two templates are provided for now, but they should cover all other templates as well */
+
+
+
+/* "Mission" Template */
+
+/* Section: "Define Your Mission" */
+
+.cp-col {
+  padding-right: 0px;
+  padding-left: 50px;
+  background-image: linear-gradient(270deg,#f9fafc,#fff);
+}
+.column-57 {
+  padding-left: 0px;
+  padding-right: 18px;
+  text-align: right;
+}
+.coverpage-section {
+  text-align: right;
+}
+.cover-page-top {
+  float: right;
+}
+.author-link {
+  margin-right: 0px;
+}
+
+/* Section: Mission Subcategories */
+
+.objective-title-word {
+  margin-right: 0px;
+  margin-right: 10px;
+}
+.add-key-result-icon {
+  margin-right: 14px;
+  margin-left: 14px;
+}
+.key-result-area {
+  padding-right: 6px;
+  padding-left: 0px;
+}
+.objective-title {
+  margin: 10px 41px 10px 15px;
+}
+.objective-title-description {
+  padding-right: 0px;
+  padding-left: 5px;
+  text-align: right;
+}
+.sentiment-color.none {
+  margin-left: 0px;
+  margin-right: 5px;
+}
+.key-result-description {
+  margin-left: 7px;
+  margin-right: 10px;
+}
+.user-initials.owner-initials {
+  margin: 0 0 0 7px;
+}
+
+
+/* Section: "Add a section" */
+
+.magnify-drop,
+.sorting-dropdown {
+  float: left;
+}
+.add-key-result-link.bottom.add-objective-toggle {
+  float: right;
+  margin-right: 18px;
+  margin-left: 4px;
+}
+.dropdown-toggle-2 {
+  padding: 0 0 0 10px;
+}
+.narrow-focus-icon {
+  margin-right: 7px;
+  margin-left: 0px;
+}
+.okr-dot-drop {
+  padding: 9px 15px 0 4px;
+}
+
+
+
+/* "SWOT Analysis Template" Template */
+
+.heading-11,
+.newswotlabel {
+  text-align: right;
+}
+.newswotlabel {
+  margin-right: 0px;
+  margin-left: 30px;
+  float: right;
+}
+.createform {
+  text-align: right;
+}
+.createright5 {
+  float: right;
+}
+.softdrop {
+  text-align: right;
+}
+div.tagsinput div {
+  float: right;
+}
